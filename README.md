@@ -255,6 +255,6 @@ If you use this framework in your research, please cite:
   author = {Kim, JangKeun},
   title = {Frontier Uplift Observatory: A Safety Evaluation Framework for Sensitive AI Domains},
   year = {2026},
-  url = {https://github.com/jkim-lab/frontier-uplift-observatory}
+  url = {https://github.com/jang1563/frontier-safety-benchmark}
 }
 ```
