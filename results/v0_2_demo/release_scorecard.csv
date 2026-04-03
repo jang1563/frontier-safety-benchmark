@@ -1,0 +1,192 @@
+metric_group,metric_name,value,notes
+overview,total_items,24,Total public-safe benchmark items in the v0.2 demo package.
+overview,warning_count,0,Coverage warnings reported by the taxonomy coverage checker.
+split,public_dev,12,
+split,public_eval,12,
+release_status,public_eval,12,
+release_status,sample,12,
+domain_family,ambiguity_recognition,4,
+domain_family,evaluation_governance,4,
+domain_family,mitigation_sensitive_query_handling,4,
+domain_family,policy_sensitive_response_handling,4,
+domain_family,refusal_and_safe_completion,4,
+domain_family,scientific_interpretation,4,
+reasoning_type,comparative_reasoning,4,
+reasoning_type,evidence_synthesis,6,
+reasoning_type,factual_uncertainty_handling,3,
+reasoning_type,missing_information_recognition,3,
+reasoning_type,paraphrase_robustness,4,
+reasoning_type,safe_boundary_articulation,4,
+mitigation_relevance,high,15,
+mitigation_relevance,medium,9,
+ambiguity_level,high,12,
+ambiguity_level,low,2,
+ambiguity_level,medium,10,
+risk_sensitivity_tier,high_public_safe,9,
+risk_sensitivity_tier,low,4,
+risk_sensitivity_tier,moderate,11,
+release_manifest,artifact_count,37,Artifact count recorded in the v0.2 release manifest.
+release_manifest_artifact_type,documentation,5,
+release_manifest_artifact_type,input,6,
+release_manifest_artifact_type,metadata,5,
+release_manifest_artifact_type,output,21,
+audit_review_count,public_dev_audit.demo-model-v0.2.pre_mitigation.count,12,Reviewed response count for this model and condition.
+audit_metric,public_dev_audit.demo-model-v0.2.pre_mitigation.calibration_score,2.333,
+audit_metric,public_dev_audit.demo-model-v0.2.pre_mitigation.evidence_grounding_score,2.083,
+audit_metric,public_dev_audit.demo-model-v0.2.pre_mitigation.mitigation_robustness_score,2.083,
+audit_metric,public_dev_audit.demo-model-v0.2.pre_mitigation.refusal_consistency_score,3.5,
+audit_metric,public_dev_audit.demo-model-v0.2.pre_mitigation.safe_boundary_score,3.583,
+audit_review_count,public_dev_audit.demo-model-v0.2.post_mitigation.count,12,Reviewed response count for this model and condition.
+audit_metric,public_dev_audit.demo-model-v0.2.post_mitigation.calibration_score,4.833,
+audit_metric,public_dev_audit.demo-model-v0.2.post_mitigation.evidence_grounding_score,4.583,
+audit_metric,public_dev_audit.demo-model-v0.2.post_mitigation.mitigation_robustness_score,4.667,
+audit_metric,public_dev_audit.demo-model-v0.2.post_mitigation.refusal_consistency_score,4.583,
+audit_metric,public_dev_audit.demo-model-v0.2.post_mitigation.safe_boundary_score,4.583,
+audit_delta,public_dev_audit.demo-model-v0.2.overall_delta.calibration_score,2.5,Post-mitigation minus pre-mitigation average.
+audit_delta,public_dev_audit.demo-model-v0.2.overall_delta.evidence_grounding_score,2.5,Post-mitigation minus pre-mitigation average.
+audit_delta,public_dev_audit.demo-model-v0.2.overall_delta.mitigation_robustness_score,2.584,Post-mitigation minus pre-mitigation average.
+audit_delta,public_dev_audit.demo-model-v0.2.overall_delta.refusal_consistency_score,1.083,Post-mitigation minus pre-mitigation average.
+audit_delta,public_dev_audit.demo-model-v0.2.overall_delta.safe_boundary_score,1.0,Post-mitigation minus pre-mitigation average.
+audit_model_overview,public_dev_audit.demo-model-v0.2.post_metric_average,4.65,Average across post-mitigation audit metrics.
+audit_model_overview,public_dev_audit.demo-model-v0.2.overall_delta_average,1.933,Average improvement across audited metrics.
+audit_model_overview,public_dev_audit.demo-model-v0.2.post_error_tag_total,0,Residual post-mitigation tagged issues across audited items.
+audit_review_count,public_dev_audit.strict-model-v0.2.pre_mitigation.count,12,Reviewed response count for this model and condition.
+audit_metric,public_dev_audit.strict-model-v0.2.pre_mitigation.calibration_score,2.333,
+audit_metric,public_dev_audit.strict-model-v0.2.pre_mitigation.evidence_grounding_score,2.083,
+audit_metric,public_dev_audit.strict-model-v0.2.pre_mitigation.mitigation_robustness_score,2.25,
+audit_metric,public_dev_audit.strict-model-v0.2.pre_mitigation.refusal_consistency_score,3.5,
+audit_metric,public_dev_audit.strict-model-v0.2.pre_mitigation.safe_boundary_score,3.75,
+audit_review_count,public_dev_audit.strict-model-v0.2.post_mitigation.count,12,Reviewed response count for this model and condition.
+audit_metric,public_dev_audit.strict-model-v0.2.post_mitigation.calibration_score,4,
+audit_metric,public_dev_audit.strict-model-v0.2.post_mitigation.evidence_grounding_score,3.667,
+audit_metric,public_dev_audit.strict-model-v0.2.post_mitigation.mitigation_robustness_score,3.75,
+audit_metric,public_dev_audit.strict-model-v0.2.post_mitigation.refusal_consistency_score,4.583,
+audit_metric,public_dev_audit.strict-model-v0.2.post_mitigation.safe_boundary_score,4.583,
+audit_delta,public_dev_audit.strict-model-v0.2.overall_delta.calibration_score,1.667,Post-mitigation minus pre-mitigation average.
+audit_delta,public_dev_audit.strict-model-v0.2.overall_delta.evidence_grounding_score,1.584,Post-mitigation minus pre-mitigation average.
+audit_delta,public_dev_audit.strict-model-v0.2.overall_delta.mitigation_robustness_score,1.5,Post-mitigation minus pre-mitigation average.
+audit_delta,public_dev_audit.strict-model-v0.2.overall_delta.refusal_consistency_score,1.083,Post-mitigation minus pre-mitigation average.
+audit_delta,public_dev_audit.strict-model-v0.2.overall_delta.safe_boundary_score,0.833,Post-mitigation minus pre-mitigation average.
+audit_model_overview,public_dev_audit.strict-model-v0.2.post_metric_average,4.117,Average across post-mitigation audit metrics.
+audit_model_overview,public_dev_audit.strict-model-v0.2.overall_delta_average,1.333,Average improvement across audited metrics.
+audit_model_overview,public_dev_audit.strict-model-v0.2.post_error_tag_total,1,Residual post-mitigation tagged issues across audited items.
+audit_review_count,public_dev_audit_slice_b.demo-model-v0.2.pre_mitigation.count,12,Reviewed response count for this model and condition.
+audit_metric,public_dev_audit_slice_b.demo-model-v0.2.pre_mitigation.calibration_score,3.167,
+audit_metric,public_dev_audit_slice_b.demo-model-v0.2.pre_mitigation.evidence_grounding_score,3.083,
+audit_metric,public_dev_audit_slice_b.demo-model-v0.2.pre_mitigation.mitigation_robustness_score,3.167,
+audit_metric,public_dev_audit_slice_b.demo-model-v0.2.pre_mitigation.refusal_consistency_score,4.167,
+audit_metric,public_dev_audit_slice_b.demo-model-v0.2.pre_mitigation.safe_boundary_score,4.167,
+audit_review_count,public_dev_audit_slice_b.demo-model-v0.2.post_mitigation.count,12,Reviewed response count for this model and condition.
+audit_metric,public_dev_audit_slice_b.demo-model-v0.2.post_mitigation.calibration_score,4.917,
+audit_metric,public_dev_audit_slice_b.demo-model-v0.2.post_mitigation.evidence_grounding_score,4.667,
+audit_metric,public_dev_audit_slice_b.demo-model-v0.2.post_mitigation.mitigation_robustness_score,4.667,
+audit_metric,public_dev_audit_slice_b.demo-model-v0.2.post_mitigation.refusal_consistency_score,4.583,
+audit_metric,public_dev_audit_slice_b.demo-model-v0.2.post_mitigation.safe_boundary_score,4.583,
+audit_delta,public_dev_audit_slice_b.demo-model-v0.2.overall_delta.calibration_score,1.75,Post-mitigation minus pre-mitigation average.
+audit_delta,public_dev_audit_slice_b.demo-model-v0.2.overall_delta.evidence_grounding_score,1.584,Post-mitigation minus pre-mitigation average.
+audit_delta,public_dev_audit_slice_b.demo-model-v0.2.overall_delta.mitigation_robustness_score,1.5,Post-mitigation minus pre-mitigation average.
+audit_delta,public_dev_audit_slice_b.demo-model-v0.2.overall_delta.refusal_consistency_score,0.416,Post-mitigation minus pre-mitigation average.
+audit_delta,public_dev_audit_slice_b.demo-model-v0.2.overall_delta.safe_boundary_score,0.416,Post-mitigation minus pre-mitigation average.
+audit_model_overview,public_dev_audit_slice_b.demo-model-v0.2.post_metric_average,4.683,Average across post-mitigation audit metrics.
+audit_model_overview,public_dev_audit_slice_b.demo-model-v0.2.overall_delta_average,1.133,Average improvement across audited metrics.
+audit_model_overview,public_dev_audit_slice_b.demo-model-v0.2.post_error_tag_total,0,Residual post-mitigation tagged issues across audited items.
+audit_review_count,public_dev_audit_slice_b.strict-model-v0.2.pre_mitigation.count,12,Reviewed response count for this model and condition.
+audit_metric,public_dev_audit_slice_b.strict-model-v0.2.pre_mitigation.calibration_score,3,
+audit_metric,public_dev_audit_slice_b.strict-model-v0.2.pre_mitigation.evidence_grounding_score,2.917,
+audit_metric,public_dev_audit_slice_b.strict-model-v0.2.pre_mitigation.mitigation_robustness_score,3,
+audit_metric,public_dev_audit_slice_b.strict-model-v0.2.pre_mitigation.refusal_consistency_score,4.25,
+audit_metric,public_dev_audit_slice_b.strict-model-v0.2.pre_mitigation.safe_boundary_score,4.25,
+audit_review_count,public_dev_audit_slice_b.strict-model-v0.2.post_mitigation.count,12,Reviewed response count for this model and condition.
+audit_metric,public_dev_audit_slice_b.strict-model-v0.2.post_mitigation.calibration_score,4,
+audit_metric,public_dev_audit_slice_b.strict-model-v0.2.post_mitigation.evidence_grounding_score,4,
+audit_metric,public_dev_audit_slice_b.strict-model-v0.2.post_mitigation.mitigation_robustness_score,4,
+audit_metric,public_dev_audit_slice_b.strict-model-v0.2.post_mitigation.refusal_consistency_score,4.583,
+audit_metric,public_dev_audit_slice_b.strict-model-v0.2.post_mitigation.safe_boundary_score,4.583,
+audit_delta,public_dev_audit_slice_b.strict-model-v0.2.overall_delta.calibration_score,1,Post-mitigation minus pre-mitigation average.
+audit_delta,public_dev_audit_slice_b.strict-model-v0.2.overall_delta.evidence_grounding_score,1.083,Post-mitigation minus pre-mitigation average.
+audit_delta,public_dev_audit_slice_b.strict-model-v0.2.overall_delta.mitigation_robustness_score,1,Post-mitigation minus pre-mitigation average.
+audit_delta,public_dev_audit_slice_b.strict-model-v0.2.overall_delta.refusal_consistency_score,0.333,Post-mitigation minus pre-mitigation average.
+audit_delta,public_dev_audit_slice_b.strict-model-v0.2.overall_delta.safe_boundary_score,0.333,Post-mitigation minus pre-mitigation average.
+audit_model_overview,public_dev_audit_slice_b.strict-model-v0.2.post_metric_average,4.233,Average across post-mitigation audit metrics.
+audit_model_overview,public_dev_audit_slice_b.strict-model-v0.2.overall_delta_average,0.75,Average improvement across audited metrics.
+audit_model_overview,public_dev_audit_slice_b.strict-model-v0.2.post_error_tag_total,0,Residual post-mitigation tagged issues across audited items.
+audit_review_count,public_eval_audit.demo-model-v0.2.pre_mitigation.count,12,Reviewed response count for this model and condition.
+audit_metric,public_eval_audit.demo-model-v0.2.pre_mitigation.calibration_score,2,
+audit_metric,public_eval_audit.demo-model-v0.2.pre_mitigation.evidence_grounding_score,1.667,
+audit_metric,public_eval_audit.demo-model-v0.2.pre_mitigation.mitigation_robustness_score,2,
+audit_metric,public_eval_audit.demo-model-v0.2.pre_mitigation.refusal_consistency_score,3.5,
+audit_metric,public_eval_audit.demo-model-v0.2.pre_mitigation.safe_boundary_score,3.5,
+audit_review_count,public_eval_audit.demo-model-v0.2.post_mitigation.count,12,Reviewed response count for this model and condition.
+audit_metric,public_eval_audit.demo-model-v0.2.post_mitigation.calibration_score,4.75,
+audit_metric,public_eval_audit.demo-model-v0.2.post_mitigation.evidence_grounding_score,4.583,
+audit_metric,public_eval_audit.demo-model-v0.2.post_mitigation.mitigation_robustness_score,4.667,
+audit_metric,public_eval_audit.demo-model-v0.2.post_mitigation.refusal_consistency_score,4.583,
+audit_metric,public_eval_audit.demo-model-v0.2.post_mitigation.safe_boundary_score,4.583,
+audit_delta,public_eval_audit.demo-model-v0.2.overall_delta.calibration_score,2.75,Post-mitigation minus pre-mitigation average.
+audit_delta,public_eval_audit.demo-model-v0.2.overall_delta.evidence_grounding_score,2.916,Post-mitigation minus pre-mitigation average.
+audit_delta,public_eval_audit.demo-model-v0.2.overall_delta.mitigation_robustness_score,2.667,Post-mitigation minus pre-mitigation average.
+audit_delta,public_eval_audit.demo-model-v0.2.overall_delta.refusal_consistency_score,1.083,Post-mitigation minus pre-mitigation average.
+audit_delta,public_eval_audit.demo-model-v0.2.overall_delta.safe_boundary_score,1.083,Post-mitigation minus pre-mitigation average.
+audit_model_overview,public_eval_audit.demo-model-v0.2.post_metric_average,4.633,Average across post-mitigation audit metrics.
+audit_model_overview,public_eval_audit.demo-model-v0.2.overall_delta_average,2.1,Average improvement across audited metrics.
+audit_model_overview,public_eval_audit.demo-model-v0.2.post_error_tag_total,0,Residual post-mitigation tagged issues across audited items.
+audit_review_count,public_eval_audit.strict-model-v0.2.pre_mitigation.count,12,Reviewed response count for this model and condition.
+audit_metric,public_eval_audit.strict-model-v0.2.pre_mitigation.calibration_score,2.25,
+audit_metric,public_eval_audit.strict-model-v0.2.pre_mitigation.evidence_grounding_score,1.917,
+audit_metric,public_eval_audit.strict-model-v0.2.pre_mitigation.mitigation_robustness_score,2.083,
+audit_metric,public_eval_audit.strict-model-v0.2.pre_mitigation.refusal_consistency_score,3.583,
+audit_metric,public_eval_audit.strict-model-v0.2.pre_mitigation.safe_boundary_score,3.667,
+audit_review_count,public_eval_audit.strict-model-v0.2.post_mitigation.count,12,Reviewed response count for this model and condition.
+audit_metric,public_eval_audit.strict-model-v0.2.post_mitigation.calibration_score,4,
+audit_metric,public_eval_audit.strict-model-v0.2.post_mitigation.evidence_grounding_score,3.667,
+audit_metric,public_eval_audit.strict-model-v0.2.post_mitigation.mitigation_robustness_score,3.75,
+audit_metric,public_eval_audit.strict-model-v0.2.post_mitigation.refusal_consistency_score,4.583,
+audit_metric,public_eval_audit.strict-model-v0.2.post_mitigation.safe_boundary_score,4.583,
+audit_delta,public_eval_audit.strict-model-v0.2.overall_delta.calibration_score,1.75,Post-mitigation minus pre-mitigation average.
+audit_delta,public_eval_audit.strict-model-v0.2.overall_delta.evidence_grounding_score,1.75,Post-mitigation minus pre-mitigation average.
+audit_delta,public_eval_audit.strict-model-v0.2.overall_delta.mitigation_robustness_score,1.667,Post-mitigation minus pre-mitigation average.
+audit_delta,public_eval_audit.strict-model-v0.2.overall_delta.refusal_consistency_score,1.0,Post-mitigation minus pre-mitigation average.
+audit_delta,public_eval_audit.strict-model-v0.2.overall_delta.safe_boundary_score,0.916,Post-mitigation minus pre-mitigation average.
+audit_model_overview,public_eval_audit.strict-model-v0.2.post_metric_average,4.117,Average across post-mitigation audit metrics.
+audit_model_overview,public_eval_audit.strict-model-v0.2.overall_delta_average,1.417,Average improvement across audited metrics.
+audit_model_overview,public_eval_audit.strict-model-v0.2.post_error_tag_total,2,Residual post-mitigation tagged issues across audited items.
+audit_review_count,public_eval_audit_slice_b.demo-model-v0.2.pre_mitigation.count,12,Reviewed response count for this model and condition.
+audit_metric,public_eval_audit_slice_b.demo-model-v0.2.pre_mitigation.calibration_score,3.167,
+audit_metric,public_eval_audit_slice_b.demo-model-v0.2.pre_mitigation.evidence_grounding_score,3.083,
+audit_metric,public_eval_audit_slice_b.demo-model-v0.2.pre_mitigation.mitigation_robustness_score,3.167,
+audit_metric,public_eval_audit_slice_b.demo-model-v0.2.pre_mitigation.refusal_consistency_score,4.167,
+audit_metric,public_eval_audit_slice_b.demo-model-v0.2.pre_mitigation.safe_boundary_score,4.167,
+audit_review_count,public_eval_audit_slice_b.demo-model-v0.2.post_mitigation.count,12,Reviewed response count for this model and condition.
+audit_metric,public_eval_audit_slice_b.demo-model-v0.2.post_mitigation.calibration_score,5,
+audit_metric,public_eval_audit_slice_b.demo-model-v0.2.post_mitigation.evidence_grounding_score,4.667,
+audit_metric,public_eval_audit_slice_b.demo-model-v0.2.post_mitigation.mitigation_robustness_score,4.667,
+audit_metric,public_eval_audit_slice_b.demo-model-v0.2.post_mitigation.refusal_consistency_score,4.583,
+audit_metric,public_eval_audit_slice_b.demo-model-v0.2.post_mitigation.safe_boundary_score,4.583,
+audit_delta,public_eval_audit_slice_b.demo-model-v0.2.overall_delta.calibration_score,1.833,Post-mitigation minus pre-mitigation average.
+audit_delta,public_eval_audit_slice_b.demo-model-v0.2.overall_delta.evidence_grounding_score,1.584,Post-mitigation minus pre-mitigation average.
+audit_delta,public_eval_audit_slice_b.demo-model-v0.2.overall_delta.mitigation_robustness_score,1.5,Post-mitigation minus pre-mitigation average.
+audit_delta,public_eval_audit_slice_b.demo-model-v0.2.overall_delta.refusal_consistency_score,0.416,Post-mitigation minus pre-mitigation average.
+audit_delta,public_eval_audit_slice_b.demo-model-v0.2.overall_delta.safe_boundary_score,0.416,Post-mitigation minus pre-mitigation average.
+audit_model_overview,public_eval_audit_slice_b.demo-model-v0.2.post_metric_average,4.7,Average across post-mitigation audit metrics.
+audit_model_overview,public_eval_audit_slice_b.demo-model-v0.2.overall_delta_average,1.15,Average improvement across audited metrics.
+audit_model_overview,public_eval_audit_slice_b.demo-model-v0.2.post_error_tag_total,0,Residual post-mitigation tagged issues across audited items.
+audit_review_count,public_eval_audit_slice_b.strict-model-v0.2.pre_mitigation.count,12,Reviewed response count for this model and condition.
+audit_metric,public_eval_audit_slice_b.strict-model-v0.2.pre_mitigation.calibration_score,3,
+audit_metric,public_eval_audit_slice_b.strict-model-v0.2.pre_mitigation.evidence_grounding_score,2.917,
+audit_metric,public_eval_audit_slice_b.strict-model-v0.2.pre_mitigation.mitigation_robustness_score,3,
+audit_metric,public_eval_audit_slice_b.strict-model-v0.2.pre_mitigation.refusal_consistency_score,4.25,
+audit_metric,public_eval_audit_slice_b.strict-model-v0.2.pre_mitigation.safe_boundary_score,4.25,
+audit_review_count,public_eval_audit_slice_b.strict-model-v0.2.post_mitigation.count,12,Reviewed response count for this model and condition.
+audit_metric,public_eval_audit_slice_b.strict-model-v0.2.post_mitigation.calibration_score,4,
+audit_metric,public_eval_audit_slice_b.strict-model-v0.2.post_mitigation.evidence_grounding_score,4,
+audit_metric,public_eval_audit_slice_b.strict-model-v0.2.post_mitigation.mitigation_robustness_score,4,
+audit_metric,public_eval_audit_slice_b.strict-model-v0.2.post_mitigation.refusal_consistency_score,4.583,
+audit_metric,public_eval_audit_slice_b.strict-model-v0.2.post_mitigation.safe_boundary_score,4.583,
+audit_delta,public_eval_audit_slice_b.strict-model-v0.2.overall_delta.calibration_score,1,Post-mitigation minus pre-mitigation average.
+audit_delta,public_eval_audit_slice_b.strict-model-v0.2.overall_delta.evidence_grounding_score,1.083,Post-mitigation minus pre-mitigation average.
+audit_delta,public_eval_audit_slice_b.strict-model-v0.2.overall_delta.mitigation_robustness_score,1,Post-mitigation minus pre-mitigation average.
+audit_delta,public_eval_audit_slice_b.strict-model-v0.2.overall_delta.refusal_consistency_score,0.333,Post-mitigation minus pre-mitigation average.
+audit_delta,public_eval_audit_slice_b.strict-model-v0.2.overall_delta.safe_boundary_score,0.333,Post-mitigation minus pre-mitigation average.
+audit_model_overview,public_eval_audit_slice_b.strict-model-v0.2.post_metric_average,4.233,Average across post-mitigation audit metrics.
+audit_model_overview,public_eval_audit_slice_b.strict-model-v0.2.overall_delta_average,0.75,Average improvement across audited metrics.
+audit_model_overview,public_eval_audit_slice_b.strict-model-v0.2.post_error_tag_total,0,Residual post-mitigation tagged issues across audited items.

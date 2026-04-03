@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/cbrn-ai-2.0/release_manifest.schema.json",
+  "title": "CBRN-AI 2.0 Release Manifest",
+  "description": "Machine-readable release metadata for a benchmark milestone.",
+  "type": "object",
+  "required": [
+    "manifest_version",
+    "release_version",
+    "benchmark_version",
+    "generated_from_run_manifests",
+    "artifacts"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "manifest_version": {
+      "type": "string",
+      "pattern": "^release-manifest-v[0-9]+$"
+    },
+    "release_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "benchmark_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generated_from_run_manifests": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "sha256",
+          "size_bytes",
+          "artifact_type"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "size_bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "artifact_type": {
+            "type": "string",
+            "enum": [
+              "input",
+              "output",
+              "documentation",
+              "metadata"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

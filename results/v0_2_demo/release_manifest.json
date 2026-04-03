@@ -1,0 +1,236 @@
+{
+  "manifest_version": "release-manifest-v1",
+  "release_version": "v0.2.0-demo",
+  "benchmark_version": "0.2.0-draft",
+  "generated_from_run_manifests": [
+    "deepmind_frontier_safety_package/data_public/run_manifest_demo.json",
+    "deepmind_frontier_safety_package/data_public/run_manifest_public_dev_audit_demo.json",
+    "deepmind_frontier_safety_package/data_public/run_manifest_public_dev_audit_slice_b.json",
+    "deepmind_frontier_safety_package/data_public/run_manifest_public_eval_audit_demo.json",
+    "deepmind_frontier_safety_package/data_public/run_manifest_public_eval_audit_slice_b.json"
+  ],
+  "artifacts": [
+    {
+      "path": "deepmind_frontier_safety_package/data_public/public_dev_items.jsonl",
+      "sha256": "113f058b9540d5d0510255999161fc6dd5cb394332f24970fd432cb3054045ed",
+      "size_bytes": 10221,
+      "artifact_type": "input"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/data_public/public_eval_items.jsonl",
+      "sha256": "25fd69fab474f707817a5691ec264bb10a8c90ac9d1654a762563d370794ce46",
+      "size_bytes": 10084,
+      "artifact_type": "input"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/data_public/reviewed_public_dev_responses_v0_2_demo.jsonl",
+      "sha256": "99bcc0f0fb3aa9fcd91c0df3e94ab1334afdc7a92b3837f9a31fd5f927beabc4",
+      "size_bytes": 23072,
+      "artifact_type": "input"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/data_public/reviewed_public_dev_responses_v0_2_slice_b.jsonl",
+      "sha256": "3763430929b00734e299335fd083391077015855a63298336c0ffadcbc918ca0",
+      "size_bytes": 22658,
+      "artifact_type": "input"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/data_public/reviewed_public_eval_responses_v0_2_demo.jsonl",
+      "sha256": "2aba57681a8939f67213f397516dafe41d75b29119bd5aab2966453258c85ec4",
+      "size_bytes": 23244,
+      "artifact_type": "input"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/data_public/reviewed_public_eval_responses_v0_2_slice_b.jsonl",
+      "sha256": "fdeb96bc06f40baa5a7cc7017218fc547d119c3ea1df9d98aa703ac078539403",
+      "size_bytes": 22583,
+      "artifact_type": "input"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/results/v0_2_demo/coverage_summary.json",
+      "sha256": "c6f32cabc30791f808bd2814c64a45fb3a6cbb67062d029f9885b04218ce06fc",
+      "size_bytes": 820,
+      "artifact_type": "output"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/results/v0_2_demo/coverage_report.md",
+      "sha256": "2aa07cdcb23fa2f300ec5438c792d7de5f655501c6a853fa61b09e4599acc652",
+      "size_bytes": 700,
+      "artifact_type": "output"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/results/v0_2_demo/public_dev_audit/summary.json",
+      "sha256": "fecbb1f7f32c0b878972aa1d31ff4dcc0530a96ded6d912dc9ac72fdd83d9284",
+      "size_bytes": 11242,
+      "artifact_type": "output"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/results/v0_2_demo/public_dev_audit/summary.md",
+      "sha256": "46ef8d9f68af9b6d696932cace8c0f23b29880f390d9a7e5a44eb6179a5de2ca",
+      "size_bytes": 6205,
+      "artifact_type": "output"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/results/v0_2_demo/public_dev_audit_slice_b/summary.json",
+      "sha256": "6a71ff12c0d98cf3254b9b9afb1410a5736793c9d1524adfb135affdd7b75465",
+      "size_bytes": 10742,
+      "artifact_type": "output"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/results/v0_2_demo/public_dev_audit_slice_b/summary.md",
+      "sha256": "a7fdf23c9908b30605d54c4379385cd9ab348b32c4febefd8e4f40a4703c112b",
+      "size_bytes": 5879,
+      "artifact_type": "output"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/results/v0_2_demo/public_eval_audit/summary.json",
+      "sha256": "1b15f201c41ba8c63d3ce7048ce30848bf0e899ca26cff03385c7670539659dc",
+      "size_bytes": 11211,
+      "artifact_type": "output"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/results/v0_2_demo/public_eval_audit/summary.md",
+      "sha256": "ee3de70b4ed78b89210a0fb410ebac04bc30a9c8f956c78da46c3957d8c0d599",
+      "size_bytes": 6174,
+      "artifact_type": "output"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/results/v0_2_demo/public_eval_audit_slice_b/summary.json",
+      "sha256": "ab4eeef498474db07521e81d20a62709cb1fcc393417f2b3a1ff8931ec12f943",
+      "size_bytes": 10713,
+      "artifact_type": "output"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/results/v0_2_demo/public_eval_audit_slice_b/summary.md",
+      "sha256": "5a5c824ce68fd1e5ea598bdf66217d7a3fdc966dce9af0dd090ba4254cc992ae",
+      "size_bytes": 5850,
+      "artifact_type": "output"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/results/v0_2_demo/benchmark_inventory.csv",
+      "sha256": "ebc0c40e04d537df52712e94ba3665f60beb9d715c2ec173c0cc83b98424ca28",
+      "size_bytes": 3837,
+      "artifact_type": "output"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/results/v0_2_demo/release_scorecard.csv",
+      "sha256": "4f27e88c5b8c1f7b2aad1d4bb174f5dfce073b511a80ee03672c94312f531b90",
+      "size_bytes": 20229,
+      "artifact_type": "output"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/results/v0_2_demo/release_scorecard.md",
+      "sha256": "e54035e189c0aeb0e9b13a83a538aa074b335c948f47875ed37bd3a7c392fabc",
+      "size_bytes": 11194,
+      "artifact_type": "output"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/results/v0_2_demo/audit_slice_overview.csv",
+      "sha256": "e270d239fa551b46dd70df439450f3d706ca98e3e8f1fae7f071672194a34ccc",
+      "size_bytes": 791,
+      "artifact_type": "output"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/results/v0_2_demo/audit_longitudinal_comparison.csv",
+      "sha256": "7fe9e60686977a820acab36efd0960c1cf62e2f3abba37095096174d034b9d34",
+      "size_bytes": 725,
+      "artifact_type": "output"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/results/v0_2_demo/audit_longitudinal_summary.md",
+      "sha256": "ef25a9f063ba555fdbf46081debc4d40beaaa661a2763e804c4dfc15e5d21c73",
+      "size_bytes": 1041,
+      "artifact_type": "output"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/results/v0_2_demo/charts/chart_pre_post_quality.png",
+      "sha256": "c81d05cd8e406437e1c0680ba587f48e5609f68935ef1915028d93fad2f445b9",
+      "size_bytes": 67988,
+      "artifact_type": "output"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/results/v0_2_demo/charts/chart_error_tag_reduction.png",
+      "sha256": "ee802bfd0297540a4d583260fa1c42bf23fdcf55858e7514ae393cdaefb807a2",
+      "size_bytes": 52328,
+      "artifact_type": "output"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/results/v0_2_demo/charts/chart_mitigation_delta.png",
+      "sha256": "90bb13607a6132cddac9c17d694429803b48d24418fa7703d8843b968c934083",
+      "size_bytes": 71678,
+      "artifact_type": "output"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/results/v0_2_demo/charts/chart_longitudinal_quality.png",
+      "sha256": "b150aa442819f7a191d4978d4e1c287b02599973c10821a4de28aa010cbcb713",
+      "size_bytes": 65465,
+      "artifact_type": "output"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/results/v0_2_demo/charts/chart_model_heatmap.png",
+      "sha256": "8f25908d655cc382a4942f490bc062863ec1590f813628e05aa0010fcf12d34d",
+      "size_bytes": 98264,
+      "artifact_type": "output"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/docs/taxonomy.md",
+      "sha256": "dd0a5b711ee4ab2d34188c3fe97ca519f7deb3e4c3777afdc628a49c5197a605",
+      "size_bytes": 9929,
+      "artifact_type": "documentation"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/docs/annotation_handbook.md",
+      "sha256": "a7038c6ac30c64fabf43b531e54fe8eb2e9a967c2f76a269c2c874431c6b5746",
+      "size_bytes": 10401,
+      "artifact_type": "documentation"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/docs/benchmark_card_draft.md",
+      "sha256": "6ac01b51fdf3e3b711b477a9ce8df6d86c5245e8c636a528259477bf8e0ae81b",
+      "size_bytes": 7816,
+      "artifact_type": "documentation"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/docs/release_log_0.2.0_demo.md",
+      "sha256": "58b8b4d01835ec05264ec7ee7719ac1eeb7413be48d0ce3fd844abc62e9c8f23",
+      "size_bytes": 3992,
+      "artifact_type": "documentation"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/docs/adjudication_handbook.md",
+      "sha256": "5c23c46455ae36e99691b8400db26b79e4fa8c823e3141993d11c8a02feebec7",
+      "size_bytes": 5949,
+      "artifact_type": "documentation"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/data_public/run_manifest_demo.json",
+      "sha256": "6a97bd86608ac9a298d77cd5ed8dedac09bec17dfd4415a4ca1a16930d8cd487",
+      "size_bytes": 998,
+      "artifact_type": "metadata"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/data_public/run_manifest_public_dev_audit_demo.json",
+      "sha256": "7478127c912e742636bdefc7a0a6f4746d060c14b4947c2c6a6c8d270f9bb453",
+      "size_bytes": 1138,
+      "artifact_type": "metadata"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/data_public/run_manifest_public_dev_audit_slice_b.json",
+      "sha256": "ea1b27b49bdbe082b706d3caf0720dccc41005131bdb56bc51598762d87071fd",
+      "size_bytes": 1216,
+      "artifact_type": "metadata"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/data_public/run_manifest_public_eval_audit_demo.json",
+      "sha256": "d98d172f43674b57f71d530a7ece639b732bd72350104e2ea981374b2724d08a",
+      "size_bytes": 1145,
+      "artifact_type": "metadata"
+    },
+    {
+      "path": "deepmind_frontier_safety_package/data_public/run_manifest_public_eval_audit_slice_b.json",
+      "sha256": "9792704b4d9c591dcec5999c28943dee409063604ac1f830478d8021a799326d",
+      "size_bytes": 1223,
+      "artifact_type": "metadata"
+    }
+  ]
+}

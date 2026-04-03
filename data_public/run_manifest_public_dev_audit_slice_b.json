@@ -1,0 +1,18 @@
+{
+  "manifest_version": "run-manifest-v1",
+  "run_id": "v0_2_public_dev_audit_slice_b",
+  "benchmark_version": "0.2.0-draft",
+  "run_type": "public_response_audit",
+  "script_path": "deepmind_frontier_safety_package/scripts/evaluate_public_responses.py",
+  "command": "python3 deepmind_frontier_safety_package/scripts/evaluate_public_responses.py --items deepmind_frontier_safety_package/data_public/public_dev_items.jsonl --responses deepmind_frontier_safety_package/data_public/reviewed_public_dev_responses_v0_2_slice_b.jsonl --output-dir deepmind_frontier_safety_package/results/v0_2_demo/public_dev_audit_slice_b",
+  "input_files": [
+    "deepmind_frontier_safety_package/data_public/public_dev_items.jsonl",
+    "deepmind_frontier_safety_package/data_public/reviewed_public_dev_responses_v0_2_slice_b.jsonl"
+  ],
+  "output_files": [
+    "deepmind_frontier_safety_package/results/v0_2_demo/public_dev_audit_slice_b/summary.json",
+    "deepmind_frontier_safety_package/results/v0_2_demo/public_dev_audit_slice_b/summary.md"
+  ],
+  "generated_by": "JangKeun Kim",
+  "notes": "Second audited release slice for the v0.2 public development split, using the same benchmark items with refreshed reviewed responses."
+}

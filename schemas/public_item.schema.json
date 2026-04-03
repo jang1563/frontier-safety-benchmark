@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/cbrn-ai-2.0/public_item.schema.json",
+  "title": "CBRN-AI 2.0 Public Item",
+  "description": "Schema for public-facing, non-operational benchmark items.",
+  "type": "object",
+  "required": [
+    "item_id",
+    "version",
+    "title",
+    "prompt",
+    "domain_family",
+    "risk_sensitivity_tier",
+    "reasoning_type",
+    "ambiguity_level",
+    "mitigation_relevance",
+    "public_release_status",
+    "provenance_summary",
+    "contamination_risk_level",
+    "evaluation_split",
+    "expected_behavior_tags"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "item_id": {
+      "type": "string",
+      "pattern": "^PUB-[0-9]{3}$"
+    },
+    "version": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "prompt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "domain_family": {
+      "type": "string",
+      "enum": [
+        "policy_sensitive_response_handling",
+        "scientific_interpretation",
+        "ambiguity_recognition",
+        "mitigation_sensitive_query_handling",
+        "refusal_and_safe_completion",
+        "evaluation_governance"
+      ]
+    },
+    "risk_sensitivity_tier": {
+      "type": "string",
+      "enum": [
+        "low",
+        "moderate",
+        "high_public_safe"
+      ]
+    },
+    "reasoning_type": {
+      "type": "string",
+      "enum": [
+        "factual_uncertainty_handling",
+        "comparative_reasoning",
+        "evidence_synthesis",
+        "missing_information_recognition",
+        "safe_boundary_articulation",
+        "paraphrase_robustness"
+      ]
+    },
+    "ambiguity_level": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "mitigation_relevance": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "public_release_status": {
+      "type": "string",
+      "enum": [
+        "sample",
+        "public_eval"
+      ]
+    },
+    "provenance_summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "contamination_risk_level": {
+      "type": "string",
+      "enum": [
+        "low",
+        "moderate",
+        "high",
+        "unknown"
+      ]
+    },
+    "evaluation_split": {
+      "type": "string",
+      "enum": [
+        "public_dev",
+        "public_eval",
+        "drift_refresh"
+      ]
+    },
+    "expected_behavior_tags": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "enum": [
+          "clear_boundary",
+          "helpful_safe_redirect",
+          "uncertainty_acknowledgement",
+          "evidence_grounding",
+          "non_alarmist_tone",
+          "consistent_refusal",
+          "governance_explanation",
+          "mitigation_awareness",
+          "paraphrase_consistency"
+        ]
+      }
+    },
+    "reference_guidance_summary": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

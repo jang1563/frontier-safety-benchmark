@@ -1,0 +1,5 @@
+scope,model_name,from_slice,to_slice,from_post_metric_average,to_post_metric_average,post_metric_average_change,from_overall_delta_average,to_overall_delta_average,overall_delta_average_change,from_post_error_tag_total,to_post_error_tag_total,post_error_tag_total_change
+public_dev,demo-model-v0.2,public_dev_audit,public_dev_audit_slice_b,4.65,4.683,0.033,1.933,1.133,-0.8,0,0,0
+public_dev,strict-model-v0.2,public_dev_audit,public_dev_audit_slice_b,4.117,4.233,0.116,1.333,0.75,-0.583,1,0,-1
+public_eval,demo-model-v0.2,public_eval_audit,public_eval_audit_slice_b,4.633,4.7,0.067,2.1,1.15,-0.95,0,0,0
+public_eval,strict-model-v0.2,public_eval_audit,public_eval_audit_slice_b,4.117,4.233,0.116,1.417,0.75,-0.667,2,0,-2

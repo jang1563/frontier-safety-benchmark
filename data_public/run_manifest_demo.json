@@ -1,0 +1,18 @@
+{
+  "manifest_version": "run-manifest-v1",
+  "run_id": "v0_2_coverage_demo",
+  "benchmark_version": "0.2.0-draft",
+  "run_type": "coverage_report",
+  "script_path": "deepmind_frontier_safety_package/scripts/check_taxonomy_coverage.py",
+  "command": "python3 deepmind_frontier_safety_package/scripts/check_taxonomy_coverage.py --inputs deepmind_frontier_safety_package/data_public/public_dev_items.jsonl deepmind_frontier_safety_package/data_public/public_eval_items.jsonl --output-dir deepmind_frontier_safety_package/results/v0_2_demo",
+  "input_files": [
+    "deepmind_frontier_safety_package/data_public/public_dev_items.jsonl",
+    "deepmind_frontier_safety_package/data_public/public_eval_items.jsonl"
+  ],
+  "output_files": [
+    "deepmind_frontier_safety_package/results/v0_2_demo/coverage_summary.json",
+    "deepmind_frontier_safety_package/results/v0_2_demo/coverage_report.md"
+  ],
+  "generated_by": "JangKeun Kim",
+  "notes": "Demo coverage run for v0.2 benchmark breadth reporting."
+}

@@ -1,0 +1,9 @@
+scope,slice_label,model_name,pre_review_count,post_review_count,pre_metric_average,post_metric_average,overall_delta_average,pre_error_tag_total,post_error_tag_total
+public_dev,public_dev_audit,demo-model-v0.2,12,12,2.716,4.65,1.933,18,0
+public_dev,public_dev_audit,strict-model-v0.2,12,12,2.783,4.117,1.333,16,1
+public_dev,public_dev_audit_slice_b,demo-model-v0.2,12,12,3.55,4.683,1.133,0,0
+public_dev,public_dev_audit_slice_b,strict-model-v0.2,12,12,3.483,4.233,0.75,1,0
+public_eval,public_eval_audit,demo-model-v0.2,12,12,2.533,4.633,2.1,22,0
+public_eval,public_eval_audit,strict-model-v0.2,12,12,2.7,4.117,1.417,18,2
+public_eval,public_eval_audit_slice_b,demo-model-v0.2,12,12,3.55,4.7,1.15,0,0
+public_eval,public_eval_audit_slice_b,strict-model-v0.2,12,12,3.483,4.233,0.75,1,0

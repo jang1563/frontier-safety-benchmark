@@ -1,0 +1,18 @@
+{
+  "manifest_version": "run-manifest-v1",
+  "run_id": "replace-with-run-id",
+  "benchmark_version": "replace-with-benchmark-version",
+  "run_type": "coverage_report",
+  "script_path": "deepmind_frontier_safety_package/scripts/check_taxonomy_coverage.py",
+  "command": "python3 ...",
+  "input_files": [
+    "deepmind_frontier_safety_package/data_public/public_dev_items.jsonl",
+    "deepmind_frontier_safety_package/data_public/public_eval_items.jsonl"
+  ],
+  "output_files": [
+    "deepmind_frontier_safety_package/results/v0_2_demo/coverage_summary.json",
+    "deepmind_frontier_safety_package/results/v0_2_demo/coverage_report.md"
+  ],
+  "generated_by": "replace-with-runner-name",
+  "notes": "Replace this with a short description of what the run is intended to produce."
+}

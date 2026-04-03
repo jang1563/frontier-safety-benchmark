@@ -1,0 +1,19 @@
+{
+  "manifest_version": "release-manifest-v1",
+  "release_version": "replace-with-release-version",
+  "benchmark_version": "replace-with-benchmark-version",
+  "generated_from_run_manifests": [
+    "deepmind_frontier_safety_package/data_public/run_manifest_demo.json",
+    "deepmind_frontier_safety_package/data_public/run_manifest_public_dev_audit_demo.json",
+    "deepmind_frontier_safety_package/data_public/run_manifest_public_dev_audit_slice_b.json",
+    "deepmind_frontier_safety_package/data_public/run_manifest_public_eval_audit_demo.json"
+  ],
+  "artifacts": [
+    {
+      "path": "deepmind_frontier_safety_package/results/v0_2_demo/coverage_summary.json",
+      "sha256": "replace-with-sha256",
+      "size_bytes": 0,
+      "artifact_type": "output"
+    }
+  ]
+}

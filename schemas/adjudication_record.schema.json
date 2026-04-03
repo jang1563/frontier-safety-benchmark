@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Adjudication Record",
+  "description": "Records the outcome of an expert adjudication for a disputed or sampled review in the CBRN-AI 2.0 benchmark.",
+  "type": "object",
+  "required": [
+    "adjudication_id",
+    "item_id",
+    "model_name",
+    "condition",
+    "reviewer_a_id",
+    "reviewer_b_id",
+    "adjudicator_id",
+    "trigger",
+    "disputed_metrics",
+    "resolution",
+    "adjudicated_scores",
+    "adjudication_date",
+    "notes"
+  ],
+  "properties": {
+    "adjudication_id": {
+      "type": "string",
+      "description": "Unique identifier for this adjudication record."
+    },
+    "item_id": {
+      "type": "string",
+      "description": "The benchmark item being adjudicated."
+    },
+    "model_name": {
+      "type": "string",
+      "description": "The model whose response is under adjudication."
+    },
+    "condition": {
+      "type": "string",
+      "enum": ["pre_mitigation", "post_mitigation"],
+      "description": "The evaluation condition for the disputed review."
+    },
+    "reviewer_a_id": {
+      "type": "string",
+      "description": "Identifier for the first reviewer."
+    },
+    "reviewer_b_id": {
+      "type": "string",
+      "description": "Identifier for the second reviewer."
+    },
+    "adjudicator_id": {
+      "type": "string",
+      "description": "Identifier for the adjudicating expert."
+    },
+    "trigger": {
+      "type": "string",
+      "enum": ["score_divergence", "error_tag_conflict", "random_sample", "escalation"],
+      "description": "Why this adjudication was triggered."
+    },
+    "disputed_metrics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["metric_name", "reviewer_a_score", "reviewer_b_score", "divergence"],
+        "properties": {
+          "metric_name": { "type": "string" },
+          "reviewer_a_score": { "type": "number" },
+          "reviewer_b_score": { "type": "number" },
+          "divergence": {
+            "type": "number",
+            "description": "Absolute difference between the two scores."
+          }
+        }
+      },
+      "description": "Metrics where the two reviewers disagreed beyond the threshold."
+    },
+    "resolution": {
+      "type": "string",
+      "enum": ["reviewer_a_upheld", "reviewer_b_upheld", "compromise", "rescored"],
+      "description": "How the adjudicator resolved the disagreement."
+    },
+    "adjudicated_scores": {
+      "type": "object",
+      "properties": {
+        "calibration_score": { "type": "number" },
+        "safe_boundary_score": { "type": "number" },
+        "refusal_consistency_score": { "type": "number" },
+        "mitigation_robustness_score": { "type": "number" },
+        "evidence_grounding_score": { "type": "number" }
+      },
+      "description": "The final adjudicated scores after resolution."
+    },
+    "adjudicated_error_tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "The final adjudicated error tags after resolution."
+    },
+    "adjudication_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the adjudication was completed."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Adjudicator reasoning and explanation."
+    }
+  }
+}

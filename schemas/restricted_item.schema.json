@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/cbrn-ai-2.0/restricted_item.schema.json",
+  "title": "CBRN-AI 2.0 Restricted Item",
+  "description": "Schema for restricted benchmark items governed separately from public releases.",
+  "type": "object",
+  "required": [
+    "item_id",
+    "version",
+    "access_class",
+    "review_status",
+    "release_decision_log"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "item_id": {
+      "type": "string",
+      "pattern": "^RES-[0-9]{3}$"
+    },
+    "version": {
+      "type": "string"
+    },
+    "restricted_prompt": {
+      "type": "string"
+    },
+    "restricted_reference_notes": {
+      "type": "string"
+    },
+    "restricted_scoring_notes": {
+      "type": "string"
+    },
+    "access_class": {
+      "type": "string",
+      "enum": [
+        "class_b_metadata_only",
+        "class_c_restricted_internal",
+        "class_d_do_not_retain"
+      ]
+    },
+    "review_status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "domain_reviewed",
+        "safety_reviewed",
+        "approved",
+        "rejected"
+      ]
+    },
+    "release_decision_log": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "date",
+          "decision",
+          "reviewer_role"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "date": {
+            "type": "string"
+          },
+          "decision": {
+            "type": "string"
+          },
+          "reviewer_role": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
