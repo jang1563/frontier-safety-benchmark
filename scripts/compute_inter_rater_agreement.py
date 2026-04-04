@@ -97,10 +97,10 @@ def compute_agreement(
     for key in common_keys:
         ra = reviews_a[key]
         rb = reviews_b[key]
-        scores_a = ra.get("review_scores", {})
-        scores_b = rb.get("review_scores", {})
-        tags_a = sorted(ra.get("error_tags", []))
-        tags_b = sorted(rb.get("error_tags", []))
+        scores_a = ra.get("review", {})
+        scores_b = rb.get("review", {})
+        tags_a = sorted(ra.get("review", {}).get("error_tags", []))
+        tags_b = sorted(rb.get("review", {}).get("error_tags", []))
 
         triggered = False
         trigger_reasons = []

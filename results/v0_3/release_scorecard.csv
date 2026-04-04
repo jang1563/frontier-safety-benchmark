@@ -1,0 +1,107 @@
+metric_group,metric_name,value,notes
+overview,total_items,24,Total public-safe benchmark items in the v0.3 package.
+overview,warning_count,0,Coverage warnings reported by the taxonomy coverage checker.
+split,public_dev,12,
+split,public_eval,12,
+release_status,public_eval,12,
+release_status,sample,12,
+domain_family,ambiguity_recognition,4,
+domain_family,evaluation_governance,4,
+domain_family,mitigation_sensitive_query_handling,4,
+domain_family,policy_sensitive_response_handling,4,
+domain_family,refusal_and_safe_completion,4,
+domain_family,scientific_interpretation,4,
+reasoning_type,comparative_reasoning,4,
+reasoning_type,evidence_synthesis,6,
+reasoning_type,factual_uncertainty_handling,3,
+reasoning_type,missing_information_recognition,3,
+reasoning_type,paraphrase_robustness,4,
+reasoning_type,safe_boundary_articulation,4,
+mitigation_relevance,high,15,
+mitigation_relevance,medium,9,
+ambiguity_level,high,12,
+ambiguity_level,low,2,
+ambiguity_level,medium,10,
+risk_sensitivity_tier,high_public_safe,9,
+risk_sensitivity_tier,low,4,
+risk_sensitivity_tier,moderate,11,
+audit_review_count,deepseek_audit.DeepSeek-V3.pre_mitigation.count,24,Reviewed response count for this model and condition.
+audit_metric,deepseek_audit.DeepSeek-V3.pre_mitigation.calibration_score,4.333,
+audit_metric,deepseek_audit.DeepSeek-V3.pre_mitigation.evidence_grounding_score,4.042,
+audit_metric,deepseek_audit.DeepSeek-V3.pre_mitigation.mitigation_robustness_score,4.042,
+audit_metric,deepseek_audit.DeepSeek-V3.pre_mitigation.refusal_consistency_score,4,
+audit_metric,deepseek_audit.DeepSeek-V3.pre_mitigation.safe_boundary_score,4.333,
+audit_review_count,deepseek_audit.DeepSeek-V3.post_mitigation.count,24,Reviewed response count for this model and condition.
+audit_metric,deepseek_audit.DeepSeek-V3.post_mitigation.calibration_score,4.167,
+audit_metric,deepseek_audit.DeepSeek-V3.post_mitigation.evidence_grounding_score,4.167,
+audit_metric,deepseek_audit.DeepSeek-V3.post_mitigation.mitigation_robustness_score,4.75,
+audit_metric,deepseek_audit.DeepSeek-V3.post_mitigation.refusal_consistency_score,4.042,
+audit_metric,deepseek_audit.DeepSeek-V3.post_mitigation.safe_boundary_score,4.458,
+audit_delta,deepseek_audit.DeepSeek-V3.overall_delta.calibration_score,-0.166,Post-mitigation minus pre-mitigation average.
+audit_delta,deepseek_audit.DeepSeek-V3.overall_delta.evidence_grounding_score,0.125,Post-mitigation minus pre-mitigation average.
+audit_delta,deepseek_audit.DeepSeek-V3.overall_delta.mitigation_robustness_score,0.708,Post-mitigation minus pre-mitigation average.
+audit_delta,deepseek_audit.DeepSeek-V3.overall_delta.refusal_consistency_score,0.042,Post-mitigation minus pre-mitigation average.
+audit_delta,deepseek_audit.DeepSeek-V3.overall_delta.safe_boundary_score,0.125,Post-mitigation minus pre-mitigation average.
+audit_model_overview,deepseek_audit.DeepSeek-V3.post_metric_average,4.317,Average across post-mitigation audit metrics.
+audit_model_overview,deepseek_audit.DeepSeek-V3.overall_delta_average,0.167,Average improvement across audited metrics.
+audit_model_overview,deepseek_audit.DeepSeek-V3.post_error_tag_total,1,Residual post-mitigation tagged issues across audited items.
+audit_review_count,gpt4o_audit.GPT-4o.pre_mitigation.count,24,Reviewed response count for this model and condition.
+audit_metric,gpt4o_audit.GPT-4o.pre_mitigation.calibration_score,4.333,
+audit_metric,gpt4o_audit.GPT-4o.pre_mitigation.evidence_grounding_score,3.917,
+audit_metric,gpt4o_audit.GPT-4o.pre_mitigation.mitigation_robustness_score,3.833,
+audit_metric,gpt4o_audit.GPT-4o.pre_mitigation.refusal_consistency_score,3.958,
+audit_metric,gpt4o_audit.GPT-4o.pre_mitigation.safe_boundary_score,4.375,
+audit_review_count,gpt4o_audit.GPT-4o.post_mitigation.count,24,Reviewed response count for this model and condition.
+audit_metric,gpt4o_audit.GPT-4o.post_mitigation.calibration_score,3.958,
+audit_metric,gpt4o_audit.GPT-4o.post_mitigation.evidence_grounding_score,3.958,
+audit_metric,gpt4o_audit.GPT-4o.post_mitigation.mitigation_robustness_score,4.542,
+audit_metric,gpt4o_audit.GPT-4o.post_mitigation.refusal_consistency_score,3.833,
+audit_metric,gpt4o_audit.GPT-4o.post_mitigation.safe_boundary_score,4.208,
+audit_delta,gpt4o_audit.GPT-4o.overall_delta.calibration_score,-0.375,Post-mitigation minus pre-mitigation average.
+audit_delta,gpt4o_audit.GPT-4o.overall_delta.evidence_grounding_score,0.041,Post-mitigation minus pre-mitigation average.
+audit_delta,gpt4o_audit.GPT-4o.overall_delta.mitigation_robustness_score,0.709,Post-mitigation minus pre-mitigation average.
+audit_delta,gpt4o_audit.GPT-4o.overall_delta.refusal_consistency_score,-0.125,Post-mitigation minus pre-mitigation average.
+audit_delta,gpt4o_audit.GPT-4o.overall_delta.safe_boundary_score,-0.167,Post-mitigation minus pre-mitigation average.
+audit_model_overview,gpt4o_audit.GPT-4o.post_metric_average,4.1,Average across post-mitigation audit metrics.
+audit_model_overview,gpt4o_audit.GPT-4o.overall_delta_average,0.017,Average improvement across audited metrics.
+audit_model_overview,gpt4o_audit.GPT-4o.post_error_tag_total,4,Residual post-mitigation tagged issues across audited items.
+audit_review_count,llama_audit.Llama-3.3-70B.pre_mitigation.count,24,Reviewed response count for this model and condition.
+audit_metric,llama_audit.Llama-3.3-70B.pre_mitigation.calibration_score,4.125,
+audit_metric,llama_audit.Llama-3.3-70B.pre_mitigation.evidence_grounding_score,3.75,
+audit_metric,llama_audit.Llama-3.3-70B.pre_mitigation.mitigation_robustness_score,3.75,
+audit_metric,llama_audit.Llama-3.3-70B.pre_mitigation.refusal_consistency_score,3.792,
+audit_metric,llama_audit.Llama-3.3-70B.pre_mitigation.safe_boundary_score,4.167,
+audit_review_count,llama_audit.Llama-3.3-70B.post_mitigation.count,24,Reviewed response count for this model and condition.
+audit_metric,llama_audit.Llama-3.3-70B.post_mitigation.calibration_score,4.292,
+audit_metric,llama_audit.Llama-3.3-70B.post_mitigation.evidence_grounding_score,4.083,
+audit_metric,llama_audit.Llama-3.3-70B.post_mitigation.mitigation_robustness_score,4.75,
+audit_metric,llama_audit.Llama-3.3-70B.post_mitigation.refusal_consistency_score,4.083,
+audit_metric,llama_audit.Llama-3.3-70B.post_mitigation.safe_boundary_score,4.417,
+audit_delta,llama_audit.Llama-3.3-70B.overall_delta.calibration_score,0.167,Post-mitigation minus pre-mitigation average.
+audit_delta,llama_audit.Llama-3.3-70B.overall_delta.evidence_grounding_score,0.333,Post-mitigation minus pre-mitigation average.
+audit_delta,llama_audit.Llama-3.3-70B.overall_delta.mitigation_robustness_score,1.0,Post-mitigation minus pre-mitigation average.
+audit_delta,llama_audit.Llama-3.3-70B.overall_delta.refusal_consistency_score,0.291,Post-mitigation minus pre-mitigation average.
+audit_delta,llama_audit.Llama-3.3-70B.overall_delta.safe_boundary_score,0.25,Post-mitigation minus pre-mitigation average.
+audit_model_overview,llama_audit.Llama-3.3-70B.post_metric_average,4.325,Average across post-mitigation audit metrics.
+audit_model_overview,llama_audit.Llama-3.3-70B.overall_delta_average,0.408,Average improvement across audited metrics.
+audit_model_overview,llama_audit.Llama-3.3-70B.post_error_tag_total,4,Residual post-mitigation tagged issues across audited items.
+audit_review_count,qwen_audit.Qwen3-32B.pre_mitigation.count,24,Reviewed response count for this model and condition.
+audit_metric,qwen_audit.Qwen3-32B.pre_mitigation.calibration_score,4.333,
+audit_metric,qwen_audit.Qwen3-32B.pre_mitigation.evidence_grounding_score,4.333,
+audit_metric,qwen_audit.Qwen3-32B.pre_mitigation.mitigation_robustness_score,4.292,
+audit_metric,qwen_audit.Qwen3-32B.pre_mitigation.refusal_consistency_score,4.167,
+audit_metric,qwen_audit.Qwen3-32B.pre_mitigation.safe_boundary_score,4.5,
+audit_review_count,qwen_audit.Qwen3-32B.post_mitigation.count,24,Reviewed response count for this model and condition.
+audit_metric,qwen_audit.Qwen3-32B.post_mitigation.calibration_score,4.292,
+audit_metric,qwen_audit.Qwen3-32B.post_mitigation.evidence_grounding_score,4,
+audit_metric,qwen_audit.Qwen3-32B.post_mitigation.mitigation_robustness_score,4.792,
+audit_metric,qwen_audit.Qwen3-32B.post_mitigation.refusal_consistency_score,4.25,
+audit_metric,qwen_audit.Qwen3-32B.post_mitigation.safe_boundary_score,4.583,
+audit_delta,qwen_audit.Qwen3-32B.overall_delta.calibration_score,-0.041,Post-mitigation minus pre-mitigation average.
+audit_delta,qwen_audit.Qwen3-32B.overall_delta.evidence_grounding_score,-0.333,Post-mitigation minus pre-mitigation average.
+audit_delta,qwen_audit.Qwen3-32B.overall_delta.mitigation_robustness_score,0.5,Post-mitigation minus pre-mitigation average.
+audit_delta,qwen_audit.Qwen3-32B.overall_delta.refusal_consistency_score,0.083,Post-mitigation minus pre-mitigation average.
+audit_delta,qwen_audit.Qwen3-32B.overall_delta.safe_boundary_score,0.083,Post-mitigation minus pre-mitigation average.
+audit_model_overview,qwen_audit.Qwen3-32B.post_metric_average,4.383,Average across post-mitigation audit metrics.
+audit_model_overview,qwen_audit.Qwen3-32B.overall_delta_average,0.058,Average improvement across audited metrics.
+audit_model_overview,qwen_audit.Qwen3-32B.post_error_tag_total,1,Residual post-mitigation tagged issues across audited items.

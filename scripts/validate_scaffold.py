@@ -1,8 +1,23 @@
 #!/usr/bin/env python3
-"""Validate the basic integrity of the public CBRN-AI 2.0 scaffold."""
+"""Validate the basic integrity of the public CBRN-AI 2.0 scaffold.
+
+By default, validates the v0.2 demo data. Use --extra-items and
+--extra-responses to validate additional files (e.g., v0.3 real model data).
+
+Usage:
+    # Validate v0.2 demo (default)
+    python3 validate_scaffold.py
+
+    # Validate v0.3 responses against all public items
+    python3 validate_scaffold.py \
+      --extra-items data_public/all_public_items.jsonl \
+      --extra-responses data_public/reviewed_responses_gpt4o_v0.3.jsonl \
+      --extra-responses data_public/reviewed_responses_llama_v0.3.jsonl
+"""
 
 from __future__ import annotations
 
+import argparse
 import json
 import re
 import hashlib
@@ -223,50 +238,90 @@ def validate_release_manifest(path: Path) -> None:
 
 
 def main() -> None:
-    items = read_jsonl(ITEMS_PATH)
-    responses = read_jsonl(RESPONSES_PATH)
-    item_index = validate_items(items)
-    validate_responses(responses, item_index)
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument(
+        "--extra-items",
+        type=Path,
+        help="Additional items JSONL file to validate (e.g., all_public_items.jsonl).",
+    )
+    parser.add_argument(
+        "--extra-responses",
+        type=Path,
+        action="append",
+        default=[],
+        help="Additional reviewed response JSONL file(s) to validate against --extra-items. Repeat for multiple files.",
+    )
+    parser.add_argument(
+        "--skip-v02",
+        action="store_true",
+        help="Skip v0.2 demo validation (useful when only validating v0.3 data).",
+    )
+    args = parser.parse_args()
 
-    optional_v0_2_summaries: list[tuple[str, str, int, int]] = []
-    optional_items_cache: dict[Path, tuple[list[dict], dict[str, dict]]] = {}
-    optional_audits = [
-        ("public_dev", "demo", PUBLIC_DEV_ITEMS_PATH, PUBLIC_DEV_RESPONSES_PATH),
-        ("public_dev", "slice_b", PUBLIC_DEV_ITEMS_PATH, PUBLIC_DEV_RESPONSES_SLICE_B_PATH),
-        ("public_eval", "slice_a", PUBLIC_EVAL_ITEMS_PATH, PUBLIC_EVAL_RESPONSES_PATH),
-        ("public_eval", "slice_b", PUBLIC_EVAL_ITEMS_PATH, PUBLIC_EVAL_RESPONSES_SLICE_B_PATH),
-    ]
-    for scope, label, items_path, response_path in optional_audits:
-        if items_path.exists() and response_path.exists():
-            if items_path not in optional_items_cache:
-                scope_items = read_jsonl(items_path)
-                optional_items_cache[items_path] = (scope_items, validate_items(scope_items))
-            scope_items, scope_index = optional_items_cache[items_path]
-            scope_responses = read_jsonl(response_path)
-            validate_responses(scope_responses, scope_index)
-            optional_v0_2_summaries.append(
-                (scope, label, len(scope_items), len(scope_responses))
+    # v0.2 validation (default)
+    if not args.skip_v02:
+        items = read_jsonl(ITEMS_PATH)
+        responses = read_jsonl(RESPONSES_PATH)
+        item_index = validate_items(items)
+        validate_responses(responses, item_index)
+
+        optional_v0_2_summaries: list[tuple[str, str, int, int]] = []
+        optional_items_cache: dict[Path, tuple[list[dict], dict[str, dict]]] = {}
+        optional_audits = [
+            ("public_dev", "demo", PUBLIC_DEV_ITEMS_PATH, PUBLIC_DEV_RESPONSES_PATH),
+            ("public_dev", "slice_b", PUBLIC_DEV_ITEMS_PATH, PUBLIC_DEV_RESPONSES_SLICE_B_PATH),
+            ("public_eval", "slice_a", PUBLIC_EVAL_ITEMS_PATH, PUBLIC_EVAL_RESPONSES_PATH),
+            ("public_eval", "slice_b", PUBLIC_EVAL_ITEMS_PATH, PUBLIC_EVAL_RESPONSES_SLICE_B_PATH),
+        ]
+        for scope, label, items_path, response_path in optional_audits:
+            if items_path.exists() and response_path.exists():
+                if items_path not in optional_items_cache:
+                    scope_items = read_jsonl(items_path)
+                    optional_items_cache[items_path] = (scope_items, validate_items(scope_items))
+                scope_items, scope_index = optional_items_cache[items_path]
+                scope_responses = read_jsonl(response_path)
+                validate_responses(scope_responses, scope_index)
+                optional_v0_2_summaries.append(
+                    (scope, label, len(scope_items), len(scope_responses))
+                )
+
+        run_manifest_validated = False
+        for manifest_path in [
+            RUN_MANIFEST_PATH,
+            PUBLIC_DEV_AUDIT_RUN_MANIFEST_PATH,
+            PUBLIC_DEV_AUDIT_SLICE_B_RUN_MANIFEST_PATH,
+            PUBLIC_EVAL_AUDIT_RUN_MANIFEST_PATH,
+            PUBLIC_EVAL_AUDIT_SLICE_B_RUN_MANIFEST_PATH,
+        ]:
+            run_manifest_validated = validate_run_manifest(manifest_path) or run_manifest_validated
+        release_manifest_validated = validate_release_manifest(RELEASE_MANIFEST_PATH)
+        print("v0.2 scaffold validation passed.")
+        print(f"Validated {len(items)} public items and {len(responses)} reviewed responses.")
+        for scope, label, item_count, response_count in optional_v0_2_summaries:
+            print(
+                f"Validated optional v0.2 {scope} demo {label}: "
+                f"{item_count} items and {response_count} reviewed responses."
             )
+        print(f"Run manifest validated: {'yes' if run_manifest_validated else 'no'}")
+        print(f"Release manifest validated: {'yes' if release_manifest_validated else 'no'}")
 
-    run_manifest_validated = False
-    for manifest_path in [
-        RUN_MANIFEST_PATH,
-        PUBLIC_DEV_AUDIT_RUN_MANIFEST_PATH,
-        PUBLIC_DEV_AUDIT_SLICE_B_RUN_MANIFEST_PATH,
-        PUBLIC_EVAL_AUDIT_RUN_MANIFEST_PATH,
-        PUBLIC_EVAL_AUDIT_SLICE_B_RUN_MANIFEST_PATH,
-    ]:
-        run_manifest_validated = validate_run_manifest(manifest_path) or run_manifest_validated
-    release_manifest_validated = validate_release_manifest(RELEASE_MANIFEST_PATH)
-    print("Scaffold validation passed.")
-    print(f"Validated {len(items)} public items and {len(responses)} reviewed responses.")
-    for scope, label, item_count, response_count in optional_v0_2_summaries:
-        print(
-            f"Validated optional v0.2 {scope} demo {label}: "
-            f"{item_count} items and {response_count} reviewed responses."
-        )
-    print(f"Run manifest validated: {'yes' if run_manifest_validated else 'no'}")
-    print(f"Release manifest validated: {'yes' if release_manifest_validated else 'no'}")
+    # Extra file validation (v0.3 or any additional data)
+    if args.extra_items or args.extra_responses:
+        if args.extra_items and not args.extra_responses:
+            extra_items = read_jsonl(args.extra_items)
+            extra_index = validate_items(extra_items)
+            print(f"\nExtra items validation passed: {len(extra_items)} items in {args.extra_items.name}")
+        elif args.extra_items and args.extra_responses:
+            extra_items = read_jsonl(args.extra_items)
+            extra_index = validate_items(extra_items)
+            print(f"\nExtra items validated: {len(extra_items)} items in {args.extra_items.name}")
+            for resp_path in args.extra_responses:
+                extra_responses = read_jsonl(resp_path)
+                validate_responses(extra_responses, extra_index)
+                print(f"Extra responses validated: {len(extra_responses)} responses in {resp_path.name}")
+            print("All extra file validations passed.")
+        else:
+            print("\nWarning: --extra-responses provided without --extra-items. Skipping.", flush=True)
 
 
 if __name__ == "__main__":

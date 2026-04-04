@@ -1,0 +1,30 @@
+{
+  "manifest_version": "run-manifest-v1",
+  "run_id": "v0_3_analysis_pipeline",
+  "benchmark_version": "0.3.0",
+  "run_type": "analysis_pipeline",
+  "script_path": "deepmind_frontier_safety_package/scripts/generate_v0_3_result_package.py",
+  "command": "python3 scripts/generate_v0_3_result_package.py --inputs data_public/public_dev_items.jsonl data_public/public_eval_items.jsonl --coverage-summary results/v0_3/coverage_summary.json --audit-summary results/v0_3/gpt4o_audit/summary.json --audit-summary results/v0_3/deepseek_audit/summary.json --audit-summary results/v0_3/llama_audit/summary.json --audit-summary results/v0_3/qwen_audit/summary.json --output-dir results/v0_3",
+  "input_files": [
+    "deepmind_frontier_safety_package/data_public/reviewed_responses_gpt4o_v0.3.jsonl",
+    "deepmind_frontier_safety_package/data_public/reviewed_responses_deepseek_v0.3.jsonl",
+    "deepmind_frontier_safety_package/data_public/reviewed_responses_llama_v0.3.jsonl",
+    "deepmind_frontier_safety_package/data_public/reviewed_responses_qwen_v0.3.jsonl",
+    "deepmind_frontier_safety_package/results/v0_3/coverage_summary.json"
+  ],
+  "output_files": [
+    "deepmind_frontier_safety_package/results/v0_3/benchmark_inventory.csv",
+    "deepmind_frontier_safety_package/results/v0_3/release_scorecard.csv",
+    "deepmind_frontier_safety_package/results/v0_3/release_scorecard.md",
+    "deepmind_frontier_safety_package/results/v0_3/audit_slice_overview.csv",
+    "deepmind_frontier_safety_package/results/v0_3/audit_longitudinal_comparison.csv",
+    "deepmind_frontier_safety_package/results/v0_3/audit_longitudinal_summary.md",
+    "deepmind_frontier_safety_package/results/v0_3/charts/chart_pre_post_quality.png",
+    "deepmind_frontier_safety_package/results/v0_3/charts/chart_error_tag_reduction.png",
+    "deepmind_frontier_safety_package/results/v0_3/charts/chart_mitigation_delta.png",
+    "deepmind_frontier_safety_package/results/v0_3/charts/chart_longitudinal_quality.png",
+    "deepmind_frontier_safety_package/results/v0_3/charts/chart_model_heatmap.png"
+  ],
+  "generated_by": "JangKeun Kim",
+  "notes": "v0.3 analysis pipeline: audit summaries, result package, and visualizations for 4 models."
+}

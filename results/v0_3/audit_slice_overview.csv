@@ -1,0 +1,5 @@
+scope,slice_label,model_name,pre_review_count,post_review_count,pre_metric_average,post_metric_average,overall_delta_average,pre_error_tag_total,post_error_tag_total
+deepseek,deepseek_audit,DeepSeek-V3,24,24,4.15,4.317,0.167,4,1
+gpt4o,gpt4o_audit,GPT-4o,24,24,4.083,4.1,0.017,5,4
+llama,llama_audit,Llama-3.3-70B,24,24,3.917,4.325,0.408,7,4
+qwen,qwen_audit,Qwen3-32B,24,24,4.325,4.383,0.058,0,1

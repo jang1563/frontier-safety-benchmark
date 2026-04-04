@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Generate visualizations from v0.2 audit CSV data.
+"""Generate visualizations from audit CSV data.
 
 Reads audit_slice_overview.csv and audit_longitudinal_comparison.csv
 and produces publication-ready charts for the portfolio and release package.
+Automatically assigns colors to models found in the data.
 """
 
 from __future__ import annotations
@@ -27,17 +28,40 @@ def read_csv(path: Path) -> list[dict[str, str]]:
 # Color palette
 # ---------------------------------------------------------------------------
 
-COLORS = {
-    "demo-model-v0.2": "#2196F3",
-    "strict-model-v0.2": "#FF9800",
-}
+COLOR_PALETTE = [
+    "#2196F3",  # blue
+    "#FF9800",  # orange
+    "#4CAF50",  # green
+    "#E91E63",  # pink
+    "#9C27B0",  # purple
+    "#00BCD4",  # cyan
+    "#FF5722",  # deep orange
+    "#607D8B",  # blue grey
+]
 PRE_COLOR = "#E57373"
 POST_COLOR = "#66BB6A"
 DELTA_COLOR = "#7E57C2"
 
+# Dynamically assigned at runtime
+_model_color_map: dict[str, str] = {}
+
+
+def build_model_color_map(rows: list[dict[str, str]]) -> None:
+    """Assign colors to unique model names found in the data."""
+    models = sorted({row["model_name"] for row in rows})
+    _model_color_map.clear()
+    for i, model in enumerate(models):
+        _model_color_map[model] = COLOR_PALETTE[i % len(COLOR_PALETTE)]
+
 
 def model_color(model_name: str) -> str:
-    return COLORS.get(model_name, "#9E9E9E")
+    return _model_color_map.get(model_name, "#9E9E9E")
+
+
+def clean_label(model_name: str, slice_label: str) -> str:
+    """Create a clean display label for a model/slice combination."""
+    short_slice = slice_label.replace("public_", "").replace("_audit", "")
+    return f"{model_name}\n{short_slice}"
 
 
 # ---------------------------------------------------------------------------
@@ -51,7 +75,7 @@ def chart_pre_post_quality(rows: list[dict[str, str]], output_dir: Path) -> Path
     pre_vals = []
     post_vals = []
     for row in rows:
-        label = f"{row['model_name'].replace('-v0.2', '')}\n{row['slice_label'].replace('public_', '').replace('_audit', '')}"
+        label = clean_label(row["model_name"], row["slice_label"])
         labels.append(label)
         pre_vals.append(float(row["pre_metric_average"]))
         post_vals.append(float(row["post_metric_average"]))
@@ -97,7 +121,7 @@ def chart_error_tag_reduction(rows: list[dict[str, str]], output_dir: Path) -> P
     pre_tags = []
     post_tags = []
     for row in rows:
-        label = f"{row['model_name'].replace('-v0.2', '')}\n{row['slice_label'].replace('public_', '').replace('_audit', '')}"
+        label = clean_label(row["model_name"], row["slice_label"])
         labels.append(label)
         pre_tags.append(int(row["pre_error_tag_total"]))
         post_tags.append(int(row["post_error_tag_total"]))
@@ -139,7 +163,7 @@ def chart_mitigation_delta(rows: list[dict[str, str]], output_dir: Path) -> Path
     deltas = []
     colors = []
     for row in rows:
-        label = f"{row['model_name'].replace('-v0.2', '')}\n{row['slice_label'].replace('public_', '').replace('_audit', '')}"
+        label = clean_label(row["model_name"], row["slice_label"])
         labels.append(label)
         deltas.append(float(row["overall_delta_average"]))
         colors.append(model_color(row["model_name"]))
@@ -161,8 +185,9 @@ def chart_mitigation_delta(rows: list[dict[str, str]], output_dir: Path) -> Path
 
     # Manual legend
     from matplotlib.patches import Patch
-    legend_elements = [Patch(facecolor=c, label=m) for m, c in COLORS.items()]
-    ax.legend(handles=legend_elements, loc="upper right", fontsize=9)
+    legend_elements = [Patch(facecolor=c, label=m) for m, c in _model_color_map.items()]
+    if legend_elements:
+        ax.legend(handles=legend_elements, loc="upper right", fontsize=9)
 
     plt.tight_layout()
     out = output_dir / "chart_mitigation_delta.png"
@@ -191,8 +216,7 @@ def chart_longitudinal_quality(long_rows: list[dict[str, str]], output_dir: Path
     for key, entries in sorted(grouped.items()):
         for entry in entries:
             short_scope = entry["scope"].replace("public_", "")
-            short_model = entry["model_name"].replace("-v0.2", "")
-            bar_labels.append(f"{short_model}\n{short_scope}")
+            bar_labels.append(f"{entry['model_name']}\n{short_scope}")
             bar_from.append(float(entry["from_post_metric_average"]))
             bar_to.append(float(entry["to_post_metric_average"]))
             bar_colors.append(model_color(entry["model_name"]))
@@ -238,7 +262,7 @@ def chart_model_comparison_heatmap(rows: list[dict[str, str]], output_dir: Path)
     data = []
 
     for row in rows:
-        short = f"{row['model_name'].replace('-v0.2', '')} | {row['slice_label'].replace('public_', '').replace('_audit', '')}"
+        short = f"{row['model_name']} | {row['slice_label'].replace('public_', '').replace('_audit', '')}"
         row_labels.append(short)
         data.append([float(row[c]) for c in metric_cols])
 
@@ -300,6 +324,8 @@ def main() -> None:
 
     overview_rows = read_csv(args.slice_overview)
     long_rows = read_csv(args.longitudinal)
+
+    build_model_color_map(overview_rows)
 
     paths = []
     paths.append(chart_pre_post_quality(overview_rows, args.output_dir))

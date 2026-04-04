@@ -1,0 +1,29 @@
+{
+  "manifest_version": "run-manifest-v1",
+  "run_id": "v0_3_model_inference",
+  "benchmark_version": "0.3.0",
+  "run_type": "model_evaluation",
+  "script_path": "deepmind_frontier_safety_package/scripts/run_model_evaluation.py",
+  "command": "python3 scripts/run_model_evaluation.py --items data_public/all_public_items.jsonl --backend openai --model <model> --condition <condition> --output data_public/raw_responses_<model>_<condition>.jsonl",
+  "input_files": [
+    "deepmind_frontier_safety_package/data_public/all_public_items.jsonl"
+  ],
+  "output_files": [
+    "deepmind_frontier_safety_package/data_public/raw_responses_gpt4o_pre.jsonl",
+    "deepmind_frontier_safety_package/data_public/raw_responses_gpt4o_post.jsonl",
+    "deepmind_frontier_safety_package/data_public/raw_responses_deepseek_pre.jsonl",
+    "deepmind_frontier_safety_package/data_public/raw_responses_deepseek_post.jsonl",
+    "deepmind_frontier_safety_package/data_public/raw_responses_llama_pre.jsonl",
+    "deepmind_frontier_safety_package/data_public/raw_responses_llama_post.jsonl",
+    "deepmind_frontier_safety_package/data_public/raw_responses_qwen_pre.jsonl",
+    "deepmind_frontier_safety_package/data_public/raw_responses_qwen_post.jsonl"
+  ],
+  "models_evaluated": [
+    {"model_id": "gpt-4o", "label": "GPT-4o", "backend": "openai", "base_url": null},
+    {"model_id": "deepseek-chat", "label": "DeepSeek-V3", "backend": "openai", "base_url": "https://api.deepseek.com"},
+    {"model_id": "meta-llama/Llama-3.3-70B-Instruct-Turbo", "label": "Llama-3.3-70B", "backend": "openai", "base_url": "https://api.together.xyz/v1"},
+    {"model_id": "qwen/qwen3-32b", "label": "Qwen3-32B", "backend": "openai", "base_url": "https://api.groq.com/openai/v1"}
+  ],
+  "generated_by": "JangKeun Kim",
+  "notes": "v0.3 real model evaluation across 4 models x 2 conditions = 192 responses. Temperature 0.3, max_tokens 2048."
+}

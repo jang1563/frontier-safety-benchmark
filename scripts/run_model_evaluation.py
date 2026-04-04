@@ -36,6 +36,28 @@ Usage:
       --model llama3.1:70b \
       --condition pre_mitigation \
       --output data_public/raw_responses_llama_pre.jsonl
+
+    # Together AI (OpenAI-compatible with custom base URL)
+    export OPENAI_API_KEY=<together-api-key>
+    python3 run_model_evaluation.py \
+      --items data_public/all_public_items.jsonl \
+      --backend openai \
+      --base-url https://api.together.xyz/v1 \
+      --model meta-llama/Llama-3.1-70B-Instruct \
+      --model-label Llama-3.1-70B \
+      --condition pre_mitigation \
+      --output data_public/raw_responses_llama_pre.jsonl
+
+    # Mistral API (OpenAI-compatible with custom base URL)
+    export OPENAI_API_KEY=<mistral-api-key>
+    python3 run_model_evaluation.py \
+      --items data_public/all_public_items.jsonl \
+      --backend openai \
+      --base-url https://api.mistral.ai/v1 \
+      --model mistral-large-latest \
+      --model-label Mistral-Large-2 \
+      --condition pre_mitigation \
+      --output data_public/raw_responses_mistral_pre.jsonl
 """
 
 from __future__ import annotations
@@ -68,14 +90,18 @@ def write_jsonl_line(handle, record: dict) -> None:
 # Backend: OpenAI-compatible
 # ---------------------------------------------------------------------------
 
-def call_openai(model: str, prompt: str, system_prompt: str | None, temperature: float) -> dict:
+def call_openai(model: str, prompt: str, system_prompt: str | None, temperature: float,
+                base_url: str | None = None) -> dict:
     try:
         import openai
     except ImportError:
         print("Error: pip install openai", file=sys.stderr)
         sys.exit(1)
 
-    client = openai.OpenAI()
+    client_kwargs = {}
+    if base_url:
+        client_kwargs["base_url"] = base_url
+    client = openai.OpenAI(**client_kwargs)
     messages = []
     if system_prompt:
         messages.append({"role": "system", "content": system_prompt})
@@ -225,6 +251,9 @@ def main() -> None:
     parser.add_argument("--output", type=Path, required=True, help="Output JSONL file for raw responses.")
     parser.add_argument("--model-label", type=str, default=None,
                         help="Human-readable model label for the output (default: same as --model).")
+    parser.add_argument("--base-url", type=str, default=None,
+                        help="Custom base URL for the OpenAI backend (e.g., https://api.together.xyz/v1 "
+                             "for Together AI, https://api.mistral.ai/v1 for Mistral).")
     parser.add_argument("--delay", type=float, default=1.0, help="Delay in seconds between API calls (default: 1.0).")
     args = parser.parse_args()
 
@@ -258,7 +287,10 @@ def main() -> None:
             print(f"  [{i}/{len(remaining)}] {item_id}: {item['title'][:50]}...", end=" ", flush=True)
 
             try:
-                result = call_fn(args.model, prompt, system_prompt, args.temperature)
+                call_kwargs = {}
+                if args.backend == "openai" and args.base_url:
+                    call_kwargs["base_url"] = args.base_url
+                result = call_fn(args.model, prompt, system_prompt, args.temperature, **call_kwargs)
             except Exception as exc:
                 print(f"ERROR: {exc}")
                 result = {

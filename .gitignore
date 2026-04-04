@@ -25,3 +25,6 @@ Thumbs.db
 .venv/
 env/
 venv/
+
+# Working files (intermediate scoring CSVs)
+scoring_sheets/
