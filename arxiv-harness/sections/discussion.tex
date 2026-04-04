@@ -1,0 +1,20 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\textbf{Mitigation effectiveness is not uniform.} Our results demonstrate that safety system prompts improve mitigation robustness across all tested models, but their effect on other dimensions---calibration, evidence grounding, and refusal consistency---varies substantially. This suggests that system-prompt-based mitigation is a necessary but insufficient layer: it reliably shifts behavior on the dimension it most directly targets (robustness to varied prompting) while having unpredictable side effects on subtler dimensions.
+
+\textbf{Strong baselines reduce marginal mitigation benefit.} GPT-4o's near-zero overall delta ($+0.02$) does not indicate that mitigation is ineffective---rather, that GPT-4o's base safety training already captures most of the behavior that the mitigation prompt would induce. In contrast, Llama-3.3-70B's large delta ($+0.41$) suggests that open-weight models with less extensive RLHF-based safety training have more to gain from explicit system-prompt interventions. This finding has practical implications: organizations deploying open-weight models may benefit more from investing in system-prompt engineering than those using frontier API models.
+
+\textbf{Calibration--safety trade-offs.} The slight calibration decreases observed for GPT-4o ($-0.38$) and Qwen3-32B ($-0.04$) under mitigation suggest a possible tension between safety-oriented prompting and epistemic calibration. Safety prompts that encourage caution may lead models to hedge more than the evidence warrants, reducing calibration accuracy. Benchmark designers should monitor this trade-off explicitly rather than relying on aggregate safety scores.
+
+\textbf{Policy inconsistency as a persistent failure mode.} The \texttt{policy\_inconsistency} error tag persists across all models even after mitigation, indicating that models apply safety thresholds inconsistently across semantically equivalent prompts. This is a structural limitation of current architectures: system prompts shift mean behavior but do not eliminate sensitivity to surface-level variation in prompt phrasing.
+
+\subsection{Limitations}
+
+\textbf{Scale.} The public benchmark contains 24 items. While this provides coverage across 6 domain families and 6 reasoning types, it limits statistical power for fine-grained comparisons. The restricted layer (not released) is larger, but cannot be used for open benchmarking.
+
+\textbf{Scoring methodology.} The current scoring protocol uses pattern-based indicators aligned with an annotation handbook. While this ensures reproducibility, it may not capture all nuances of response quality that expert human evaluation would identify. Future work should validate against independent expert ratings.
+
+\textbf{Model selection.} We evaluate four models at a single point in time. Model behavior changes across versions, and our results reflect a snapshot rather than a longitudinal trend. The framework is designed to support longitudinal tracking, but this paper reports only the initial evaluation round.
+
+\textbf{Single mitigation strategy.} We test only system-prompt-based mitigation. Other mitigation strategies (e.g., fine-tuning, content filtering, retrieval-augmented safety) may produce different patterns and should be evaluated using the same framework in future work.

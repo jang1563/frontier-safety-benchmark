@@ -1,0 +1,12 @@
+\section{Related Work}
+\label{sec:related}
+
+\textbf{Capability-focused safety benchmarks.} WMDP~\citep{li2024wmdp} measures whether models possess dangerous knowledge across biosecurity, cybersecurity, and chemical weapons domains. SecureBio's Viral Creation Tool assessment~\citep{mouton2024operational} evaluates whether AI assistance provides meaningful uplift for biological threat creation. These benchmarks answer ``what does the model know?'' but not ``do mitigations work?''
+
+\textbf{Uplift measurement.} METR's AI-biology randomized controlled trial~\citep{metr2026} provides the gold standard for measuring whether AI assistance changes experimental outcomes. However, RCTs are expensive, domain-specific, and infeasible for continuous monitoring of mitigation effectiveness across model versions.
+
+\textbf{Safety frameworks.} DeepMind's Frontier Safety Framework~\citep{deepmind2024fsf} defines Critical Capability Levels (CCLs) for evaluating model risk. Anthropic's Responsible Scaling Policy~\citep{anthropic2023rsp} introduces AI Safety Levels (ASLs) with corresponding evaluation commitments. OpenAI's Preparedness Framework~\citep{openai2023preparedness} provides risk categorization. These frameworks motivate evaluation but do not provide reusable, contamination-aware evaluation toolkits.
+
+\textbf{Evaluation methodology.} Recent work on benchmark saturation~\citep{kiela2021dynabench}, contamination detection~\citep{oren2023proving}, and holistic evaluation~\citep{liang2023holistic} highlights the fragility of static benchmarks. Our work applies these insights specifically to safety-sensitive evaluation, where the cost of evaluation failure is higher than in general capability benchmarks.
+
+\textbf{Position.} We complement capability benchmarks (which measure knowledge) with a methodology for testing whether mitigations actually hold, using contamination-aware design and governed release infrastructure.

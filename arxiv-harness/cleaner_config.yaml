@@ -1,0 +1,22 @@
+# arxiv-latex-cleaner configuration
+# Usage: arxiv_latex_cleaner . --config cleaner_config.yaml
+
+resize_images: true
+im_size: 500
+
+commands_to_delete:
+  - todo
+  - note
+  - fixme
+
+commands_only_to_delete:
+  - hl
+  - textcolor
+
+environments_to_delete:
+  - comment
+
+# Keep high-res for key figures
+images_allowlist:
+  "figures/chart_model_heatmap.png": 1200
+  "figures/chart_pre_post_quality.png": 1200

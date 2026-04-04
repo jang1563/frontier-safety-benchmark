@@ -1,0 +1,47 @@
+\section{Experimental Setup}
+\label{sec:experiments}
+
+\subsection{Models}
+
+We evaluate four production models spanning frontier API providers and open-source alternatives:
+
+\begin{itemize}[nosep,leftmargin=*]
+  \item \textbf{GPT-4o} (OpenAI): frontier multimodal model accessed via the OpenAI API.
+  \item \textbf{DeepSeek-V3} (DeepSeek): frontier model accessed via the DeepSeek API using the OpenAI-compatible endpoint.
+  \item \textbf{Llama-3.3-70B-Instruct} (Meta): open-weight model served via Together AI's inference API.
+  \item \textbf{Qwen3-32B} (Alibaba): open-weight model served via Groq's inference API.
+\end{itemize}
+
+All models are accessed through OpenAI-compatible API endpoints with temperature $T=0.3$ and a maximum output length of 2048 tokens. No few-shot examples are provided.
+
+\subsection{Conditions}
+
+Each model is evaluated under two conditions on all 24 public-safe items, yielding $4 \times 2 \times 24 = 192$ total responses:
+
+\begin{itemize}[nosep,leftmargin=*]
+  \item \textbf{Pre-mitigation}: no system prompt. The model receives only the user prompt from each benchmark item.
+  \item \textbf{Post-mitigation}: a standardized safety system prompt is prepended, instructing the model to prioritize evidence-grounded responses, acknowledge uncertainty, respect safety boundaries, and provide safe alternatives when refusing.
+\end{itemize}
+
+\subsection{Scoring Procedure}
+
+Responses are scored using a systematic protocol aligned with the annotation handbook (\Cref{sec:rubric}):
+
+\begin{enumerate}[nosep,leftmargin=*]
+  \item Each response is evaluated against the expected behavior tags defined in its item metadata.
+  \item Domain-family-specific scoring criteria determine the relative weight of each metric (e.g., refusal-domain items weight \emph{refusal consistency} and \emph{safe boundary} more heavily).
+  \item Pattern-based indicators (presence of uncertainty markers, evidence citations, safe redirects, overconfidence markers) are used to assign initial scores, which are then adjusted based on the mitigation condition.
+  \item Error tags are assigned when responses exhibit specific failure modes (e.g., \texttt{overconfidence} when a response asserts certainty on ambiguous topics).
+\end{enumerate}
+
+\subsection{Analysis Pipeline}
+
+The scoring outputs feed into three analysis stages:
+
+\begin{enumerate}[nosep,leftmargin=*]
+  \item \textbf{Per-model audit summaries}: aggregated pre/post scores, deltas, and error tag distributions for each model.
+  \item \textbf{Cross-model comparison}: standardized scorecard with all models on a common scale, enabling direct comparison of mitigation effectiveness.
+  \item \textbf{Taxonomy coverage validation}: automated verification that all domain families, reasoning types, and sensitivity tiers are represented in the evaluation set.
+\end{enumerate}
+
+All scripts, configurations, and intermediate outputs are included in the release package for full reproducibility.

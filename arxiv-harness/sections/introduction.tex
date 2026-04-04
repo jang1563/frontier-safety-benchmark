@@ -1,0 +1,22 @@
+\section{Introduction}
+\label{sec:introduction}
+
+As frontier language models grow more capable, evaluating whether safety mitigations remain effective on sensitive scientific topics becomes increasingly critical. Current approaches to safety evaluation face three structural gaps that limit their utility for high-stakes domains such as chemical, biological, radiological, and nuclear (CBRN) safety:
+
+\textbf{(1) Contamination blindness.} Most public benchmarks release all evaluation items openly, creating a direct pathway for training-set contamination. In safety-critical domains, this is doubly problematic: contaminated items lose validity as evaluation probes, and the items themselves may encode operationally sensitive knowledge~\citep{li2024wmdp}.
+
+\textbf{(2) No structured mitigation auditing.} Existing benchmarks primarily measure model knowledge or capability rather than whether mitigations---such as safety system prompts, RLHF alignment, or content filters---actually change behavior on sensitive items. A model that refuses a dangerous request is not necessarily safe; a model whose refusal degrades under paraphrase or pressure is detectably fragile.
+
+\textbf{(3) No release governance.} Evaluation artifacts (items, responses, scores) are themselves potential attack surfaces. Without versioned packaging, integrity verification, and contamination tracking, benchmark releases can drift, leak, or be manipulated.
+
+We address all three gaps with the \textbf{Frontier Uplift Observatory}, a contamination-aware evaluation framework that:
+
+\begin{itemize}[nosep,leftmargin=*]
+  \item Separates evaluation items into public-safe and restricted layers, with the public layer designed for open release and the restricted layer for governed access only.
+  \item Provides a structured pre/post-mitigation comparison protocol with 5 safety-relevant metrics and 6 controlled error tags.
+  \item Includes release governance: SHA-256 integrity manifests, versioned packaging, provenance tracking, and contamination risk labels.
+\end{itemize}
+
+We validate the framework by evaluating four production models---GPT-4o, DeepSeek-V3, Llama-3.3-70B, and Qwen3-32B---across all 24 public-safe items under both pre-mitigation (no system prompt) and post-mitigation (safety system prompt) conditions. Our results show that mitigation prompts improve all models, but with substantial variation: Llama-3.3-70B shows the largest improvement ($\Delta = +0.41$), while GPT-4o shows minimal change ($\Delta = +0.02$), suggesting its base safety training already captures most mitigation behavior.
+
+The complete framework, evaluation data, scoring tools, and analysis pipeline are open-sourced.\footnote{\url{https://github.com/jang1563/frontier-safety-benchmark}}

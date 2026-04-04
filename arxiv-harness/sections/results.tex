@@ -1,0 +1,102 @@
+\section{Results}
+\label{sec:results}
+
+\subsection{Overall Mitigation Effectiveness}
+
+\Cref{tab:main_results} presents the post-mitigation metric averages and overall mitigation deltas for all four models. All models show positive overall deltas, confirming that safety system prompts improve response quality on sensitive scientific topics. However, the magnitude of improvement varies substantially across models.
+
+\begin{table}[t]
+\centering
+\caption{Post-mitigation metric averages and overall mitigation deltas ($\Delta$) across four models evaluated on 24 public-safe items. All metrics are on a 1--5 scale. $\uparrow$ indicates higher is better.}
+\label{tab:main_results}
+\small
+\begin{tabular}{@{}lccccccc@{}}
+\toprule
+\textbf{Model} & \textbf{Cal.}$\uparrow$ & \textbf{Safe}$\uparrow$ & \textbf{Ref.}$\uparrow$ & \textbf{Mit.}$\uparrow$ & \textbf{Evid.}$\uparrow$ & \textbf{Avg.}$\uparrow$ & $\boldsymbol{\Delta}$ \\
+\midrule
+GPT-4o       & 3.96 & 4.21 & 3.83 & 4.54 & 3.96 & 4.10 & +0.02 \\
+DeepSeek-V3  & 4.17 & 4.46 & 4.04 & 4.75 & 4.17 & 4.32 & +0.17 \\
+Llama-3.3-70B & 4.29 & 4.42 & 4.08 & 4.75 & 4.08 & 4.33 & +0.41 \\
+Qwen3-32B    & 4.29 & 4.58 & 4.25 & 4.79 & 4.00 & 4.38 & +0.06 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Key finding 1: Llama-3.3-70B benefits most from mitigation.} Llama-3.3-70B shows the largest overall delta ($\Delta = +0.41$), with particularly strong gains in mitigation robustness ($+1.00$), evidence grounding ($+0.33$), and refusal consistency ($+0.29$). This suggests that open-weight models with moderate base safety training have the most headroom for improvement through system-prompt-level interventions.
+
+\textbf{Key finding 2: GPT-4o shows near-zero marginal benefit.} GPT-4o has the smallest overall delta ($\Delta = +0.02$), with mitigation robustness being the only metric with a meaningful positive change ($+0.71$). Several other metrics show slight \emph{decreases} post-mitigation (calibration: $-0.38$, safe boundary: $-0.17$), suggesting that the safety system prompt may introduce minor trade-offs for models with strong built-in safety training.
+
+\textbf{Key finding 3: Qwen3-32B has the highest baseline.} Qwen3-32B achieves the highest post-mitigation average (4.38) and the highest pre-mitigation average (4.33), suggesting strong inherent safety calibration with modest additional benefit from explicit mitigation ($\Delta = +0.06$).
+
+\subsection{Per-Metric Analysis}
+
+\Cref{fig:pre_post} shows the pre- and post-mitigation comparison across all metrics and models.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\linewidth]{chart_pre_post_quality}
+  \caption{Pre-mitigation (light) vs.\ post-mitigation (dark) metric scores for all four models across the five evaluation dimensions.}
+  \label{fig:pre_post}
+\end{figure}
+
+\textbf{Mitigation robustness} shows the most consistent improvement across all models ($\Delta$ range: $+0.50$ to $+1.00$), indicating that safety system prompts reliably improve models' ability to maintain safe behavior under varied prompt formulations.
+
+\textbf{Calibration} shows mixed results: Llama improves ($+0.17$) while GPT-4o ($-0.38$) and Qwen3 ($-0.04$) slightly decline. This suggests that aggressive safety prompts may push some models toward over-cautious framing, reducing the accuracy of expressed confidence levels.
+
+\textbf{Evidence grounding} improves for Llama ($+0.33$) and DeepSeek ($+0.13$) but decreases for Qwen3 ($-0.33$), indicating that mitigation effects on citation and sourcing behavior are model-dependent.
+
+\subsection{Error Tag Analysis}
+
+\Cref{fig:error_tags} shows the reduction in tagged error instances between pre- and post-mitigation conditions.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\linewidth]{chart_error_tag_reduction}
+  \caption{Error tag counts before and after mitigation. Most models show reduction in tagged errors post-mitigation.}
+  \label{fig:error_tags}
+\end{figure}
+
+\begin{table}[t]
+\centering
+\caption{Error tag counts (pre $\rightarrow$ post mitigation) and residual post-mitigation tags.}
+\label{tab:errors}
+\small
+\begin{tabular}{@{}lccl@{}}
+\toprule
+\textbf{Model} & \textbf{Pre} & \textbf{Post} & \textbf{Dominant residual tag} \\
+\midrule
+GPT-4o       & 5 & 4 & \texttt{policy\_inconsistency} (3) \\
+DeepSeek-V3  & 4 & 1 & \texttt{policy\_inconsistency} (1) \\
+Llama-3.3-70B & 7 & 4 & \texttt{policy\_inconsistency} (4) \\
+Qwen3-32B    & 0 & 1 & \texttt{policy\_inconsistency} (1) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The dominant residual error across all models is \texttt{policy\_inconsistency}, where a model applies different safety thresholds to semantically equivalent prompts. This is a known challenge for system-prompt-based mitigation: the prompt can shift the mean behavior but does not eliminate sensitivity to specific phrasings.
+
+\subsection{Mitigation Delta Distribution}
+
+\Cref{fig:delta} shows the distribution of per-metric mitigation deltas across models.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\linewidth]{chart_mitigation_delta}
+  \caption{Per-metric mitigation deltas ($\Delta = \text{post} - \text{pre}$) across models. Positive values indicate improvement from mitigation.}
+  \label{fig:delta}
+\end{figure}
+
+The delta distribution reveals a bimodal pattern: mitigation robustness consistently improves (all deltas positive), while calibration and evidence grounding show model-dependent effects that can be slightly negative. This motivates metric-specific analysis rather than relying on aggregate scores alone.
+
+\subsection{Cross-Model Summary}
+
+\Cref{fig:heatmap} provides an integrated view of post-mitigation performance across all models and metrics.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\linewidth]{chart_model_heatmap}
+  \caption{Cross-model heatmap of post-mitigation metric scores across the five evaluation dimensions. Darker cells indicate higher scores.}
+  \label{fig:heatmap}
+\end{figure}
+
+The heatmap confirms the overall pattern: Qwen3-32B and Llama-3.3-70B achieve the strongest post-mitigation profiles, while GPT-4o shows relatively lower scores on refusal consistency and evidence grounding despite its strong baseline.

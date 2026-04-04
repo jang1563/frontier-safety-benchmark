@@ -1,0 +1,88 @@
+\section*{NeurIPS Paper Checklist}
+
+\begin{enumerate}
+
+\item {\bf Claims}
+    \item[] Question: Do the main claims made in the abstract and introduction accurately reflect the paper's contributions and scope?
+    \item[] Answer: \answerYes{}
+    \item[] Justification: The abstract and introduction clearly state the three contributions (contamination-aware design, structured mitigation auditing, release governance) and the empirical findings across four models. All claims are supported by results in \Cref{sec:results}.
+
+\item {\bf Limitations}
+    \item[] Question: Does the paper discuss the limitations of the work performed by the authors?
+    \item[] Answer: \answerYes{}
+    \item[] Justification: \Cref{sec:discussion} includes a dedicated Limitations subsection discussing scale (24 items), scoring methodology, model selection, and single mitigation strategy.
+
+\item {\bf Theory assumptions and proofs}
+    \item[] Question: For each theoretical result, does the paper provide the full set of assumptions and a complete (and correct) proof?
+    \item[] Answer: \answerNA{}
+    \item[] Justification: This paper is an evaluation framework and empirical benchmark; it does not include theoretical results or proofs.
+
+    \item {\bf Experimental result reproducibility}
+    \item[] Question: Does the paper fully disclose all the information needed to reproduce the main experimental results of the paper to the extent that it affects the main claims and/or conclusions of the paper (regardless of whether the code and data are provided or not)?
+    \item[] Answer: \answerYes{}
+    \item[] Justification: \Cref{sec:experiments} specifies all models, API endpoints, temperatures, and conditions. \Cref{sec:reproducibility} provides exact file paths and commands. Run manifests document all parameters.
+
+
+\item {\bf Open access to data and code}
+    \item[] Question: Does the paper provide open access to the data and code, with sufficient instructions to faithfully reproduce the main experimental results, as described in supplemental material?
+    \item[] Answer: \answerYes{}
+    \item[] Justification: All evaluation items, raw responses, scored responses, analysis scripts, and results are publicly available at \url{https://github.com/jang1563/frontier-safety-benchmark}. Reproduction commands are provided in \Cref{sec:reproducibility}.
+
+
+\item {\bf Experimental setting/details}
+    \item[] Question: Does the paper specify all the training and test details (e.g., data splits, hyperparameters, how they were chosen, type of optimizer) necessary to understand the results?
+    \item[] Answer: \answerYes{}
+    \item[] Justification: \Cref{sec:experiments} specifies all evaluation parameters (temperature, max tokens, system prompts, API endpoints). The public/restricted split is described in \Cref{sec:taxonomy}. No training is performed.
+
+\item {\bf Experiment statistical significance}
+    \item[] Question: Does the paper report error bars suitably and correctly defined or other appropriate information about the statistical significance of the experiments?
+    \item[] Answer: \answerNo{}
+    \item[] Justification: Each model--condition pair produces a single deterministic response (temperature 0.3 with fixed prompts). We report mean scores across 24 items but do not report confidence intervals. The benchmark size (24 items) limits statistical power, which is acknowledged in the Limitations subsection.
+
+\item {\bf Experiments compute resources}
+    \item[] Question: For each experiment, does the paper provide sufficient information on the computer resources (type of compute workers, memory, time of execution) needed to reproduce the experiments?
+    \item[] Answer: \answerYes{}
+    \item[] Justification: All inference is performed via cloud API calls (OpenAI, DeepSeek, Together AI, Groq). No local GPU computation is required. The 192 API calls complete in under 30 minutes total.
+
+\item {\bf Code of ethics}
+    \item[] Question: Does the research conducted in the paper conform, in every respect, with the NeurIPS Code of Ethics \url{https://neurips.cc/public/EthicsGuidelines}?
+    \item[] Answer: \answerYes{}
+    \item[] Justification: The research evaluates AI safety mitigations using public-safe prompts that do not encode operationally dangerous knowledge. The public/restricted split is designed to prevent dual-use risks.
+
+
+\item {\bf Broader impacts}
+    \item[] Question: Does the paper discuss both potential positive societal impacts and negative societal impacts of the work performed?
+    \item[] Answer: \answerYes{}
+    \item[] Justification: The framework is designed to improve AI safety evaluation. Potential negative impacts (benchmark gaming, false security from passing evaluations) are mitigated by the contamination-aware design and the public/restricted split, discussed in \Cref{sec:governance,sec:discussion}.
+
+\item {\bf Safeguards}
+    \item[] Question: Does the paper describe safeguards that have been put in place for responsible release of data or models that have a high risk for misuse (e.g., pre-trained language models, image generators, or scraped datasets)?
+    \item[] Answer: \answerYes{}
+    \item[] Justification: The framework uses a public/restricted split specifically to prevent release of operationally sensitive evaluation items. Only public-safe items are released. Release governance (SHA-256 manifests, versioned packaging) provides additional safeguards. See \Cref{sec:governance}.
+
+\item {\bf Licenses for existing assets}
+    \item[] Question: Are the creators or original owners of assets (e.g., code, data, models), used in the paper, properly credited and are the license and terms of use explicitly mentioned and properly respected?
+    \item[] Answer: \answerYes{}
+    \item[] Justification: All models are accessed through their official APIs and cited in the paper. The benchmark items and evaluation code are original work released under an open-source license.
+
+\item {\bf New assets}
+    \item[] Question: Are new assets introduced in the paper well documented and is the documentation provided alongside the assets?
+    \item[] Answer: \answerYes{}
+    \item[] Justification: The benchmark items, scoring rubrics, analysis pipeline, and release infrastructure are documented in the paper (\Cref{sec:framework,sec:rubric,sec:reproducibility}) and in the repository README.
+
+\item {\bf Crowdsourcing and research with human subjects}
+    \item[] Question: For crowdsourcing experiments and research with human subjects, does the paper include the full text of instructions given to participants and screenshots, if applicable, as well as details about compensation (if any)?
+    \item[] Answer: \answerNA{}
+    \item[] Justification: This research does not involve crowdsourcing or human subjects.
+
+\item {\bf Institutional review board (IRB) approvals or equivalent for research with human subjects}
+    \item[] Question: Does the paper describe potential risks incurred by study participants, whether such risks were disclosed to the subjects, and whether Institutional Review Board (IRB) approvals (or an equivalent approval/review based on the requirements of your country or institution) were obtained?
+    \item[] Answer: \answerNA{}
+    \item[] Justification: This research does not involve human subjects.
+
+\item {\bf Declaration of LLM usage}
+    \item[] Question: Does the paper describe the usage of LLMs if it is an important, original, or non-standard component of the core methods in this research? Note that if the LLM is used only for writing, editing, or formatting purposes and does \emph{not} impact the core methodology, scientific rigor, or originality of the research, declaration is not required.
+    \item[] Answer: \answerYes{}
+    \item[] Justification: The core contribution is an evaluation framework for LLMs. The four evaluated models (GPT-4o, DeepSeek-V3, Llama-3.3-70B, Qwen3-32B) are fully described in \Cref{sec:experiments}.
+
+\end{enumerate}

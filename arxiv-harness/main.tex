@@ -1,0 +1,89 @@
+% ============================================================================
+% Frontier Uplift Observatory — NeurIPS 2026 Evaluations & Datasets Track
+% ============================================================================
+%
+% Build:    make            (compile PDF)
+%           make watch      (live preview)
+%           make arxiv      (package for arXiv submission)
+%           make check      (pre-submission validation)
+%
+% Modes:    \usepackage[preprint]{neurips_2026}   % arXiv preprint
+%           \usepackage{neurips_2026}              % anonymous submission
+%           \usepackage[final]{neurips_2026}       % camera-ready
+%
+% Track:    eandd = Evaluations & Datasets Track
+% ============================================================================
+
+\documentclass[11pt]{article}
+
+% --- NeurIPS 2026 style ---
+% Toggle between submission modes:
+\usepackage[preprint,eandd]{neurips_2026}   % arXiv preprint
+% \usepackage[eandd]{neurips_2026}           % anonymous submission (uncomment for review)
+% \usepackage[final,eandd]{neurips_2026}     % camera-ready (uncomment after acceptance)
+
+% --- Essential packages ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{nicefrac}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{subcaption}
+\usepackage{cleveref}
+
+% --- Figure path ---
+\graphicspath{{figures/}}
+
+% --- Metadata ---
+\title{Frontier Uplift Observatory: A Contamination-Aware Safety Evaluation Framework for Sensitive AI Domains}
+
+% For anonymous submission, comment out author block:
+\author{
+  JangKeun Kim \\
+  Department of Physiology and Biophysics \\
+  Weill Cornell Medicine \\
+  New York, NY 10065 \\
+  \texttt{jak4013@med.cornell.edu}
+}
+
+\begin{document}
+
+\maketitle
+
+% --- Sections ---
+\input{sections/abstract}
+\input{sections/introduction}
+\input{sections/related_work}
+\input{sections/framework}
+\input{sections/experiments}
+\input{sections/results}
+\input{sections/discussion}
+\input{sections/conclusion}
+
+% --- Acknowledgments (hidden in anonymous mode) ---
+\begin{ack}
+\input{sections/acknowledgments}
+\end{ack}
+
+% --- References ---
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+% --- Appendix ---
+\newpage
+\appendix
+\input{sections/appendix}
+
+% --- NeurIPS Checklist (mandatory) ---
+\newpage
+\input{sections/checklist}
+
+\end{document}

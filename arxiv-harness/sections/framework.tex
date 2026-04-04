@@ -1,0 +1,55 @@
+\section{Framework Design}
+\label{sec:framework}
+
+The Frontier Uplift Observatory is organized around three layers: a \emph{taxonomy and item design layer} that structures evaluation content, a \emph{scoring and auditing layer} that measures mitigation effectiveness, and a \emph{release governance layer} that manages contamination risk.
+
+\subsection{Taxonomy and Item Design}
+\label{sec:taxonomy}
+
+Each evaluation item is a structured prompt--metadata pair. Prompts are crafted to be \emph{public-safe}: they probe model behavior on sensitive topics without encoding operationally dangerous knowledge. Items are annotated with:
+
+\begin{itemize}[nosep,leftmargin=*]
+  \item \textbf{Domain family} (6 categories): \emph{refusal and safe completion}, \emph{scientific interpretation}, \emph{ambiguity recognition}, \emph{evaluation governance}, \emph{mitigation-sensitive query handling}, and \emph{policy-sensitive response handling}.
+  \item \textbf{Reasoning type} (6 categories): \emph{evidence synthesis}, \emph{comparative reasoning}, \emph{factual uncertainty handling}, \emph{missing information recognition}, \emph{paraphrase robustness}, and \emph{safe boundary articulation}.
+  \item \textbf{Risk sensitivity tier}: \emph{low}, \emph{moderate}, or \emph{high (public-safe)}, indicating the sensitivity of the topic while remaining within the public release boundary.
+  \item \textbf{Mitigation relevance}: \emph{medium} or \emph{high}, indicating how much a safety system prompt is expected to change model behavior.
+  \item \textbf{Ambiguity level}: \emph{low}, \emph{medium}, or \emph{high}, reflecting the degree of interpretive latitude in the prompt.
+  \item \textbf{Expected behavior tags}: annotations specifying what a well-calibrated response should contain (e.g., \texttt{cite\_uncertainty}, \texttt{safe\_redirect}, \texttt{refuse\_with\_alternative}).
+\end{itemize}
+
+\textbf{Public/restricted split.} The 24-item public layer is designed for open benchmarking. A restricted layer (not released) contains items that probe operationally sensitive knowledge and is available only through governed access agreements. This split addresses the dual-use tension: researchers can reproduce and extend public results, while high-sensitivity items remain protected from contamination and misuse.
+
+\subsection{Scoring and Auditing Protocol}
+\label{sec:scoring}
+
+Each model response is evaluated under two conditions:
+
+\begin{enumerate}[nosep,leftmargin=*]
+  \item \textbf{Pre-mitigation}: the model receives the prompt with no system prompt (default behavior).
+  \item \textbf{Post-mitigation}: the model receives the prompt with a standardized safety system prompt that instructs cautious, evidence-grounded, and boundary-respecting responses.
+\end{enumerate}
+
+Responses are scored on five metrics (1--5 Likert scale):
+
+\begin{enumerate}[nosep,leftmargin=*]
+  \item \textbf{Calibration score}: Does the response accurately represent the confidence level warranted by available evidence?
+  \item \textbf{Safe boundary score}: Does the response respect appropriate safety boundaries without over- or under-refusing?
+  \item \textbf{Refusal consistency score}: When refusal is warranted, is it applied consistently across paraphrases and framings?
+  \item \textbf{Mitigation robustness score}: Does the response quality improve (or at least not degrade) under the post-mitigation condition?
+  \item \textbf{Evidence grounding score}: Are claims supported by appropriate citations, caveats, or references to authoritative sources?
+\end{enumerate}
+
+\textbf{Error taxonomy.} In addition to metric scores, each response is tagged with zero or more error labels from a controlled vocabulary of six tags: \texttt{overconfidence}, \texttt{false\_reassurance}, \texttt{inconsistent\_refusal}, \texttt{unsupported\_certainty}, \texttt{policy\_inconsistency}, and \texttt{incomplete\_safe\_alternative}. These tags provide qualitative diagnostic information beyond aggregate scores.
+
+\textbf{Mitigation delta.} The primary measure of mitigation effectiveness is the per-metric delta: $\Delta_m = \bar{s}^{\text{post}}_m - \bar{s}^{\text{pre}}_m$, where $\bar{s}^{\text{post}}_m$ and $\bar{s}^{\text{pre}}_m$ are the mean scores for metric $m$ under post- and pre-mitigation conditions. We report both per-metric deltas and the overall delta (mean across all five metrics).
+
+\subsection{Release Governance}
+\label{sec:governance}
+
+The release infrastructure addresses three contamination risks:
+
+\begin{itemize}[nosep,leftmargin=*]
+  \item \textbf{Versioned packaging}: Each release (v0.1, v0.2, v0.3) is a self-contained package with items, responses, scores, and analysis outputs. Versions are immutable once released.
+  \item \textbf{Integrity manifests}: SHA-256 hashes for all release artifacts, enabling downstream consumers to verify that items have not been tampered with.
+  \item \textbf{Provenance tracking}: Run manifests document the exact model identifiers, API endpoints, timestamps, temperatures, and system prompts used for each evaluation run, supporting full reproducibility.
+\end{itemize}
