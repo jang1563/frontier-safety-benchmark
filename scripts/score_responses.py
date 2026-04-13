@@ -482,6 +482,8 @@ def main():
         ("deepseek", "DeepSeek-V3"),
         ("llama", "Llama-3.3-70B"),
         ("qwen", "Qwen3-32B"),
+        ("claude", "Claude-Sonnet-4"),
+        ("gemini", "Gemini-2.5-Pro"),
     ]
 
     scoring_dir = ROOT / "scoring_sheets"

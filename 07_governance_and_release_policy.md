@@ -164,7 +164,7 @@ As the project grows, consider adding:
 - annual governance audit
 - explicit retirement process for outdated or newly risky public materials
 
-## Why this matters for your portfolio
+## Why this matters for the public release
 
 This governance layer strengthens the project because it shows:
 

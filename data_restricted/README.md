@@ -11,6 +11,5 @@ Purpose:
 If restricted materials are ever added, they should follow the governance rules in:
 
 - `07_governance_and_release_policy.md`
-- `05_safe_execution_and_prompting.md`
 
 Public versions of the project should continue to publish metadata, schemas, and methodology without exposing restricted prompts, answers, or adjudication notes.

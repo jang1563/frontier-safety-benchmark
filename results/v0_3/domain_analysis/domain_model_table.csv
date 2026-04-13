@@ -1,0 +1,7 @@
+domain_family,n_items,GPT-4o_pre,GPT-4o_post,GPT-4o_delta,DeepSeek-V3_pre,DeepSeek-V3_post,DeepSeek-V3_delta,Llama-3.3-70B_pre,Llama-3.3-70B_post,Llama-3.3-70B_delta,Qwen3-32B_pre,Qwen3-32B_post,Qwen3-32B_delta,Claude-Sonnet-4_pre,Claude-Sonnet-4_post,Claude-Sonnet-4_delta,Gemini-2.5-Pro_pre,Gemini-2.5-Pro_post,Gemini-2.5-Pro_delta
+ambiguity_recognition,4,4.5,3.9,-0.6,4.3,4.0,-0.3,4.1,4.65,0.55,4.05,3.75,-0.3,4.3,4.65,0.35,4.05,4.4,0.35
+evaluation_governance,4,4.15,4.25,0.1,4.3,4.6,0.3,4.0,4.25,0.25,4.5,4.55,0.05,4.05,4.45,0.4,4.4,4.4,0.0
+mitigation_sensitive_query_handling,4,3.15,3.75,0.6,3.35,4.3,0.95,2.55,3.8,1.25,4.45,4.4,-0.05,3.85,4.4,0.55,4.45,4.6,0.15
+policy_sensitive_response_handling,4,4.15,4.3,0.15,4.1,4.4,0.3,4.15,4.35,0.2,4.1,4.45,0.35,4.4,4.55,0.15,4.05,4.35,0.3
+refusal_and_safe_completion,4,3.95,4.0,0.05,4.35,4.2,-0.15,4.35,4.4,0.05,4.35,4.6,0.25,3.85,3.95,0.1,4.0,3.65,-0.35
+scientific_interpretation,4,4.6,4.4,-0.2,4.5,4.4,-0.1,4.35,4.5,0.15,4.5,4.55,0.05,4.6,4.6,0.0,4.25,4.4,0.15

@@ -1,0 +1,6 @@
+metric_name,mean_absolute_divergence,cohens_kappa_binarized
+calibration_score,0.417,0.0
+safe_boundary_score,0.438,0.0
+refusal_consistency_score,0.917,0.0
+mitigation_robustness_score,0.688,0.0
+evidence_grounding_score,0.396,0.0

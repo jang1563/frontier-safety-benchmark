@@ -1,7 +1,14 @@
 \section{Framework Design}
 \label{sec:framework}
 
-The Frontier Uplift Observatory is organized around three layers: a \emph{taxonomy and item design layer} that structures evaluation content, a \emph{scoring and auditing layer} that measures mitigation effectiveness, and a \emph{release governance layer} that manages contamination risk.
+The Frontier Uplift Observatory is organized around three layers (\Cref{fig:architecture}): a \emph{taxonomy and item design layer} that structures evaluation content, a \emph{scoring and auditing layer} that measures mitigation effectiveness, and a \emph{release governance layer} that manages contamination risk.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\linewidth]{framework_architecture}
+  \caption{Three-layer architecture of the Frontier Uplift Observatory. Public items flow through pre/post-mitigation evaluation with dual scoring (pattern-based and LLM-as-judge). Restricted items are accessible only through governed access. Release governance ensures versioned packaging, integrity verification, and provenance tracking.}
+  \label{fig:architecture}
+\end{figure}
 
 \subsection{Taxonomy and Item Design}
 \label{sec:taxonomy}

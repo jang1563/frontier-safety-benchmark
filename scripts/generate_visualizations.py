@@ -2,7 +2,7 @@
 """Generate visualizations from audit CSV data.
 
 Reads audit_slice_overview.csv and audit_longitudinal_comparison.csv
-and produces publication-ready charts for the portfolio and release package.
+and produces publication-ready charts for the release package.
 Automatically assigns colors to models found in the data.
 """
 
@@ -10,7 +10,29 @@ from __future__ import annotations
 
 import argparse
 import csv
+import plistlib
+import subprocess
+import sys
 from pathlib import Path
+
+
+def _patch_macos_font_probe() -> None:
+    """Work around matplotlib font discovery failures on some macOS setups."""
+    if sys.platform != "darwin":
+        return
+
+    original_check_output = subprocess.check_output
+    empty_font_plist = plistlib.dumps([{"_items": []}])
+
+    def safe_check_output(cmd, *args, **kwargs):
+        if isinstance(cmd, (list, tuple)) and list(cmd[:3]) == ["system_profiler", "-xml", "SPFontsDataType"]:
+            return empty_font_plist
+        return original_check_output(cmd, *args, **kwargs)
+
+    subprocess.check_output = safe_check_output
+
+
+_patch_macos_font_probe()
 
 import matplotlib
 matplotlib.use("Agg")

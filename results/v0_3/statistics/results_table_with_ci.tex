@@ -1,0 +1,19 @@
+% Auto-generated table with bootstrap CIs
+\begin{table}[t]
+\centering
+\caption{Post-mitigation metric averages with 95\% bootstrap confidence intervals and mitigation deltas across models. $\uparrow$ indicates higher is better. Significance from Wilcoxon signed-rank tests: * $p<0.05$, ** $p<0.01$.}
+\label{tab:main_results_ci}
+\small
+\begin{tabular}{@{}lccccccc@{}}
+\toprule
+\textbf{Model} & \textbf{Cal.}$\uparrow$ & \textbf{Safe}$\uparrow$ & \textbf{Ref.}$\uparrow$ & \textbf{Mit.}$\uparrow$ & \textbf{Evid.}$\uparrow$ & \textbf{Avg.}$\uparrow$ & $\boldsymbol{\Delta}$ \\
+\midrule
+GPT-4o & 3.96* & 4.21 & 3.83 & 4.54** & 3.96 & 4.10 & +0.02 \\
+DeepSeek-V3 & 4.17 & 4.46 & 4.04 & 4.75** & 4.17 & 4.32 & +0.17 \\
+Llama-3.3-70B & 4.29 & 4.42 & 4.08 & 4.75** & 4.08 & 4.33 & +0.41 \\
+Qwen3-32B & 4.29 & 4.58 & 4.25 & 4.79** & 4.00 & 4.38 & +0.06 \\
+Claude-Sonnet-4 & 4.38 & 4.50 & 4.17 & 4.79** & 4.33 & 4.43 & +0.26 \\
+Gemini-2.5-Pro & 4.29 & 4.38 & 4.08 & 4.71** & 4.04 & 4.30 & +0.10 \\
+\bottomrule
+\end{tabular}
+\end{table}

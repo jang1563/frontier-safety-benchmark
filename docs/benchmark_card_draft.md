@@ -36,7 +36,7 @@ Appropriate uses:
 - safety-oriented benchmark prototyping
 - mitigation-audit methodology development
 - contamination-aware evaluation design
-- portfolio and interview discussion material for frontier-safety work
+- public documentation for frontier-safety evaluation work
 - governed internal extension work with additional controls
 
 Inappropriate uses:
@@ -55,11 +55,10 @@ Current public components:
 - `public_eval_items.jsonl` with 12 evaluation items
 - `reviewed_public_dev_responses_v0_2_demo.jsonl`, `reviewed_public_dev_responses_v0_2_slice_b.jsonl`, `reviewed_public_eval_responses_v0_2_demo.jsonl`, and `reviewed_public_eval_responses_v0_2_slice_b.jsonl` for four audited demo slices
 - `benchmark_inventory.csv`, `coverage_report.md`, `release_scorecard.csv`, `release_scorecard.md`, `audit_slice_overview.csv`, `audit_longitudinal_comparison.csv`, `audit_longitudinal_summary.md`, `public_dev_audit/summary.md`, `public_dev_audit_slice_b/summary.md`, `public_eval_audit/summary.md`, and `public_eval_audit_slice_b/summary.md`
-- public schemas plus documentation for governance, taxonomy, annotation, adjudication, and release planning
+- public schemas plus documentation for governance, taxonomy, annotation, adjudication, and release procedures
 - release metadata via run manifests and a consolidated release manifest spanning coverage plus all current audit slices
 - 5 visualization charts (pre/post quality, error tag reduction, mitigation delta, longitudinal quality, model heatmap)
 - an adjudication framework with schema, handbook, and inter-rater agreement computation script
-- a portfolio summary document explaining the full project in plain English
 
 Restricted-layer status:
 
@@ -102,7 +101,7 @@ Contamination control practices in this package include:
 
 - explicit public vs withheld split design
 - per-item provenance summaries
-- refresh planning in the roadmap and taxonomy docs
+- refresh planning in the taxonomy and release documentation
 - release documentation that distinguishes sample items from public evaluation items
 
 ## 7. Metrics
@@ -152,4 +151,4 @@ Governance for this benchmark is described in `07_governance_and_release_policy.
 ## 11. Changelog
 
 - `v0.1` introduced the initial public-safe scaffold, schemas, sample items, reviewed-response demo data, and the first validator and evaluator
-- `v0.2` expands the public-safe benchmark to 24 items, adds taxonomy and annotation documentation, introduces consolidated multi-run release metadata, and adds structured release scorecards, inventory exports, explicit slice-comparison tables, four audited slices across `public_dev` and `public_eval`, 5 visualization charts, an adjudication framework with schema and handbook, an inter-rater agreement computation script, and a portfolio summary
+- `v0.2` expands the public-safe benchmark to 24 items, adds taxonomy and annotation documentation, introduces consolidated multi-run release metadata, and adds structured release scorecards, inventory exports, explicit slice-comparison tables, four audited slices across `public_dev` and `public_eval`, 5 visualization charts, an adjudication framework with schema and handbook, and an inter-rater agreement computation script

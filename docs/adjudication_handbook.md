@@ -15,7 +15,7 @@ Adjudication applies to the public benchmark layer only. It does not authorize o
 
 A benchmark is only as credible as its scoring consistency. If two reviewers give the same response a 2 and a 5, either the scoring anchors are unclear, the item is ambiguous, or one reviewer misread the response. Adjudication catches these problems and creates a record of how they were resolved.
 
-For a portfolio-stage project, having an adjudication framework already designed shows evaluation maturity even before a full multi-reviewer study is conducted.
+Even before a full multi-reviewer study is conducted, having an adjudication framework in place shows evaluation maturity.
 
 ## When adjudication is triggered
 

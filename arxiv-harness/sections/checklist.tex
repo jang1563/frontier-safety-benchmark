@@ -5,7 +5,7 @@
 \item {\bf Claims}
     \item[] Question: Do the main claims made in the abstract and introduction accurately reflect the paper's contributions and scope?
     \item[] Answer: \answerYes{}
-    \item[] Justification: The abstract and introduction clearly state the three contributions (contamination-aware design, structured mitigation auditing, release governance) and the empirical findings across four models. All claims are supported by results in \Cref{sec:results}.
+    \item[] Justification: The abstract and introduction clearly state the three contributions (contamination-aware design, structured mitigation auditing, release governance) and the empirical findings across six models. All claims are supported by results in \Cref{sec:results}.
 
 \item {\bf Limitations}
     \item[] Question: Does the paper discuss the limitations of the work performed by the authors?
@@ -36,13 +36,13 @@
 
 \item {\bf Experiment statistical significance}
     \item[] Question: Does the paper report error bars suitably and correctly defined or other appropriate information about the statistical significance of the experiments?
-    \item[] Answer: \answerNo{}
-    \item[] Justification: Each model--condition pair produces a single deterministic response (temperature 0.3 with fixed prompts). We report mean scores across 24 items but do not report confidence intervals. The benchmark size (24 items) limits statistical power, which is acknowledged in the Limitations subsection.
+    \item[] Answer: \answerYes{}
+    \item[] Justification: We report 95\% bootstrap confidence intervals (10,000 resamples) for all means and deltas in \Cref{tab:main_results}. Mitigation effectiveness is tested using Wilcoxon signed-rank tests (paired by item) with significance markers in the main table. Effect sizes (Cohen's $d$, rank-biserial correlation) are reported. Cross-model differences are assessed using Friedman tests.
 
 \item {\bf Experiments compute resources}
     \item[] Question: For each experiment, does the paper provide sufficient information on the computer resources (type of compute workers, memory, time of execution) needed to reproduce the experiments?
     \item[] Answer: \answerYes{}
-    \item[] Justification: All inference is performed via cloud API calls (OpenAI, DeepSeek, Together AI, Groq). No local GPU computation is required. The 192 API calls complete in under 30 minutes total.
+    \item[] Justification: All inference is performed via cloud API calls (OpenAI, Anthropic, Google, DeepSeek, Together AI, Groq). No local GPU computation is required. The 288 API calls (6 models $\times$ 24 items $\times$ 2 conditions) complete in under 45 minutes total.
 
 \item {\bf Code of ethics}
     \item[] Question: Does the research conducted in the paper conform, in every respect, with the NeurIPS Code of Ethics \url{https://neurips.cc/public/EthicsGuidelines}?
@@ -83,6 +83,6 @@
 \item {\bf Declaration of LLM usage}
     \item[] Question: Does the paper describe the usage of LLMs if it is an important, original, or non-standard component of the core methods in this research? Note that if the LLM is used only for writing, editing, or formatting purposes and does \emph{not} impact the core methodology, scientific rigor, or originality of the research, declaration is not required.
     \item[] Answer: \answerYes{}
-    \item[] Justification: The core contribution is an evaluation framework for LLMs. The four evaluated models (GPT-4o, DeepSeek-V3, Llama-3.3-70B, Qwen3-32B) are fully described in \Cref{sec:experiments}.
+    \item[] Justification: The core contribution is an evaluation framework for LLMs. The six evaluated models (GPT-4o, Claude Sonnet 4, Gemini 2.5 Pro, DeepSeek-V3, Llama-3.3-70B, Qwen3-32B) are fully described in \Cref{sec:experiments}. Additionally, an LLM-as-judge protocol using Claude Sonnet 4 as independent scorer is used for scoring validation (\Cref{sec:llm_judge,sec:validation}).
 
 \end{enumerate}

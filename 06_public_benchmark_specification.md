@@ -190,7 +190,7 @@ Annotate errors using categories such as:
 - policy inconsistency
 - incomplete safe alternative
 
-These categories should be controlled vocabulary rather than free text so that counts remain stable across versions and reviewers. They are much more portfolio-friendly than capability-style labels.
+These categories should be controlled vocabulary rather than free text so that counts remain stable across versions and reviewers. They are much more suitable for longitudinal evaluation than capability-style labels.
 
 ## Annotation workflow
 

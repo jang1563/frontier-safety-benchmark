@@ -1,7 +1,16 @@
 # Internal strategy documents (not for public release)
 01_gap_analysis_and_role_repositioning.md
+03_cbrn_ai_2_project_vision.md
 04_build_and_application_plan.md
+05_safe_execution_and_prompting.md
+08_long_term_roadmap.md
+09_v0.2_release_plan.md
+10_safe_prompt_templates.md
+11_portfolio_summary.md
 12_publication_plan.md
+
+# Local manuscript scratch space
+paper/
 
 # Python
 __pycache__/

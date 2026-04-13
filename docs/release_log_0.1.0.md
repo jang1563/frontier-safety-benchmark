@@ -15,7 +15,7 @@ Approved by: Draft public release
 
 - New public items: 6 safe sample benchmark items
 - New restricted items: none
-- New documentation: benchmark card draft, governance and roadmap materials, release template
+- New documentation: benchmark card draft, governance materials, release template
 - New metrics or scripts: public response audit script with per-model calibration and mitigation summary output, plus scaffold validation script
 
 ## Changed

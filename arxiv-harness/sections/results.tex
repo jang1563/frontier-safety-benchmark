@@ -3,30 +3,32 @@
 
 \subsection{Overall Mitigation Effectiveness}
 
-\Cref{tab:main_results} presents the post-mitigation metric averages and overall mitigation deltas for all four models. All models show positive overall deltas, confirming that safety system prompts improve response quality on sensitive scientific topics. However, the magnitude of improvement varies substantially across models.
+\Cref{tab:main_results} presents post-mitigation metric averages and overall mitigation deltas with 95\% bootstrap confidence intervals. All models show positive overall deltas, confirming that safety system prompts improve response quality on sensitive scientific topics. However, the magnitude of improvement varies substantially across models.
 
 \begin{table}[t]
 \centering
-\caption{Post-mitigation metric averages and overall mitigation deltas ($\Delta$) across four models evaluated on 24 public-safe items. All metrics are on a 1--5 scale. $\uparrow$ indicates higher is better.}
+\caption{Post-mitigation metric averages and overall mitigation deltas ($\Delta$) across six models evaluated on 24 public-safe items (1--5 scale). Cal.=Calibration, Safe=Safe Boundary, Ref.=Refusal Consistency, Mit.=Mitigation Robustness, Evid.=Evidence Grounding. Significance: * $p<0.05$, ** $p<0.01$ (Wilcoxon signed-rank). CIs from 10,000 bootstrap resamples.}
 \label{tab:main_results}
 \small
-\begin{tabular}{@{}lccccccc@{}}
+\begin{tabular}{@{}lccccccl@{}}
 \toprule
-\textbf{Model} & \textbf{Cal.}$\uparrow$ & \textbf{Safe}$\uparrow$ & \textbf{Ref.}$\uparrow$ & \textbf{Mit.}$\uparrow$ & \textbf{Evid.}$\uparrow$ & \textbf{Avg.}$\uparrow$ & $\boldsymbol{\Delta}$ \\
+\textbf{Model} & \textbf{Cal.} & \textbf{Safe} & \textbf{Ref.} & \textbf{Mit.} & \textbf{Evid.} & \textbf{Avg.} & $\boldsymbol{\Delta}$ \textbf{[95\% CI]} \\
 \midrule
-GPT-4o       & 3.96 & 4.21 & 3.83 & 4.54 & 3.96 & 4.10 & +0.02 \\
-DeepSeek-V3  & 4.17 & 4.46 & 4.04 & 4.75 & 4.17 & 4.32 & +0.17 \\
-Llama-3.3-70B & 4.29 & 4.42 & 4.08 & 4.75 & 4.08 & 4.33 & +0.41 \\
-Qwen3-32B    & 4.29 & 4.58 & 4.25 & 4.79 & 4.00 & 4.38 & +0.06 \\
+GPT-4o         & 3.96* & 4.21 & 3.83 & 4.54** & 3.96 & 4.10 & $+0.02$ $[-0.13, +0.18]$ \\
+Claude-Sonnet-4 & 4.38 & 4.50 & 4.17 & 4.79** & 4.33 & 4.43 & $+0.26$ $[+0.16, +0.37]$ \\
+Gemini-2.5-Pro  & 4.29 & 4.38 & 4.08 & 4.71** & 4.04 & 4.30 & $+0.10$ $[-0.04, +0.23]$ \\
+DeepSeek-V3    & 4.17 & 4.46 & 4.04 & 4.75** & 4.17 & 4.32 & $+0.17$ $[+0.00, +0.34]$ \\
+Llama-3.3-70B  & 4.29 & 4.42 & 4.08 & 4.75** & 4.08 & 4.33 & $+0.41$ $[+0.27, +0.56]$ \\
+Qwen3-32B      & 4.29 & 4.58 & 4.25 & 4.79** & 4.00 & 4.38 & $+0.06$ $[-0.08, +0.19]$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\textbf{Key finding 1: Llama-3.3-70B benefits most from mitigation.} Llama-3.3-70B shows the largest overall delta ($\Delta = +0.41$), with particularly strong gains in mitigation robustness ($+1.00$), evidence grounding ($+0.33$), and refusal consistency ($+0.29$). This suggests that open-weight models with moderate base safety training have the most headroom for improvement through system-prompt-level interventions.
+\textbf{Key finding 1: Mitigation robustness improves significantly for all six models.} The mitigation robustness metric shows statistically significant improvement across all models ($p < 0.01$, Wilcoxon signed-rank), with effect sizes ranging from $d = 0.65$ (DeepSeek) to $d = 1.20$ (Llama). Safety system prompts reliably improve models' ability to maintain safe behavior under varied prompt formulations regardless of model family or training origin.
 
-\textbf{Key finding 2: GPT-4o shows near-zero marginal benefit.} GPT-4o has the smallest overall delta ($\Delta = +0.02$), with mitigation robustness being the only metric with a meaningful positive change ($+0.71$). Several other metrics show slight \emph{decreases} post-mitigation (calibration: $-0.38$, safe boundary: $-0.17$), suggesting that the safety system prompt may introduce minor trade-offs for models with strong built-in safety training.
+\textbf{Key finding 2: Claude achieves the strongest post-mitigation profile.} Claude Sonnet 4 achieves the highest post-mitigation average (4.43) with a substantial delta ($\Delta = +0.26$, 95\% CI $[+0.16, +0.37]$), demonstrating strong improvement from an already high baseline. Llama-3.3-70B shows the largest absolute gain ($\Delta = +0.41$, CI $[+0.27, +0.56]$), consistent with its lower baseline and greater headroom for improvement. GPT-4o shows near-zero marginal benefit ($\Delta = +0.02$, CI includes zero), suggesting its base training already captures most mitigation-relevant behavior.
 
-\textbf{Key finding 3: Qwen3-32B has the highest baseline.} Qwen3-32B achieves the highest post-mitigation average (4.38) and the highest pre-mitigation average (4.33), suggesting strong inherent safety calibration with modest additional benefit from explicit mitigation ($\Delta = +0.06$).
+\textbf{Key finding 3: Calibration--safety trade-offs.} GPT-4o's calibration score \emph{decreases} significantly under mitigation ($\Delta = -0.38$, $p = 0.036$, $d = -0.49$), suggesting that safety-oriented system prompts can push models toward over-cautious framing. This trade-off does not appear for Claude ($\Delta_\text{cal} = +0.08$) or Llama ($+0.17$), indicating it is model-specific rather than universal.
 
 \subsection{Per-Metric Analysis}
 
@@ -35,19 +37,35 @@ Qwen3-32B    & 4.29 & 4.58 & 4.25 & 4.79 & 4.00 & 4.38 & +0.06 \\
 \begin{figure}[t]
   \centering
   \includegraphics[width=\linewidth]{chart_pre_post_quality}
-  \caption{Pre-mitigation (light) vs.\ post-mitigation (dark) metric scores for all four models across the five evaluation dimensions.}
+  \caption{Pre-mitigation (light) vs.\ post-mitigation (dark) metric scores for all models across the five evaluation dimensions.}
   \label{fig:pre_post}
 \end{figure}
 
-\textbf{Mitigation robustness} shows the most consistent improvement across all models ($\Delta$ range: $+0.50$ to $+1.00$), indicating that safety system prompts reliably improve models' ability to maintain safe behavior under varied prompt formulations.
+\textbf{Mitigation robustness} shows the most consistent improvement ($\Delta$ range: $+0.50$ to $+1.00$, all $p < 0.01$). \textbf{Calibration} shows mixed results: Llama improves ($+0.17$) while GPT-4o declines significantly ($-0.38$, $p < 0.05$). \textbf{Evidence grounding} improves for Llama ($+0.33$) but declines for Qwen3 ($-0.33$), indicating model-dependent mitigation effects on citation behavior.
 
-\textbf{Calibration} shows mixed results: Llama improves ($+0.17$) while GPT-4o ($-0.38$) and Qwen3 ($-0.04$) slightly decline. This suggests that aggressive safety prompts may push some models toward over-cautious framing, reducing the accuracy of expressed confidence levels.
+The Friedman test reveals no statistically significant cross-model differences on any individual metric ($p > 0.38$ for all), consistent with the relatively narrow range of post-mitigation averages (4.10--4.38 overall) and the limited statistical power of $n = 24$ items.
 
-\textbf{Evidence grounding} improves for Llama ($+0.33$) and DeepSeek ($+0.13$) but decreases for Qwen3 ($-0.33$), indicating that mitigation effects on citation and sourcing behavior are model-dependent.
+\subsection{Domain-Family Analysis}
+\label{sec:domain_analysis}
+
+\Cref{fig:domain_heatmap} shows mitigation deltas broken down by domain family and model, revealing that mitigation effectiveness varies substantially across evaluation domains.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\linewidth]{chart_domain_delta_heatmap}
+  \caption{Mitigation delta by domain family and model. Green indicates improvement, red indicates degradation. Mitigation-sensitive query handling shows the largest and most consistent gains, while ambiguity recognition shows mixed results---degradation for GPT-4o, DeepSeek, and Qwen3 but improvement for Claude, Gemini, and Llama.}
+  \label{fig:domain_heatmap}
+\end{figure}
+
+\textbf{Mitigation-sensitive query handling} shows the largest gains across three models (Llama: $+1.25$, DeepSeek: $+0.95$, GPT-4o: $+0.60$), with Qwen3 as the exception ($-0.05$, already near ceiling). This domain tests boundary maintenance under reframing attempts---precisely where system-prompt mitigation is most effective.
+
+\textbf{Ambiguity recognition} shows a model-family split: degradation for GPT-4o ($-0.60$), DeepSeek ($-0.30$), and Qwen3 ($-0.30$), but improvement for Claude ($+0.35$), Gemini ($+0.35$), and Llama ($+0.55$). The pattern suggests that Anthropic and Google safety training produces calibrated uncertainty expression under safety prompts, while other families trend toward over-caution.
+
+\textbf{Item difficulty analysis} reveals that the four hardest items (PUB-111, PUB-102, PUB-202, PUB-211) all belong to the mitigation-sensitive query handling domain, with pre-mitigation difficulty scores of 3.15--3.60. The easiest items (PUB-108, PUB-208) are scientific interpretation items with pre-mitigation scores of 4.60, suggesting near-ceiling baseline performance.
 
 \subsection{Error Tag Analysis}
 
-\Cref{fig:error_tags} shows the reduction in tagged error instances between pre- and post-mitigation conditions.
+\Cref{fig:error_tags} shows the reduction in tagged error instances between conditions.
 
 \begin{figure}[t]
   \centering
@@ -65,38 +83,73 @@ Qwen3-32B    & 4.29 & 4.58 & 4.25 & 4.79 & 4.00 & 4.38 & +0.06 \\
 \toprule
 \textbf{Model} & \textbf{Pre} & \textbf{Post} & \textbf{Dominant residual tag} \\
 \midrule
-GPT-4o       & 5 & 4 & \texttt{policy\_inconsistency} (3) \\
-DeepSeek-V3  & 4 & 1 & \texttt{policy\_inconsistency} (1) \\
-Llama-3.3-70B & 7 & 4 & \texttt{policy\_inconsistency} (4) \\
-Qwen3-32B    & 0 & 1 & \texttt{policy\_inconsistency} (1) \\
+GPT-4o           & 5 & 4 & \texttt{policy\_inconsistency} (3) \\
+Claude-Sonnet-4  & 4 & 2 & \texttt{policy\_inconsistency} (1) \\
+Gemini-2.5-Pro   & 0 & 1 & \texttt{inconsistent\_refusal} (1) \\
+DeepSeek-V3      & 4 & 1 & \texttt{policy\_inconsistency} (1) \\
+Llama-3.3-70B    & 7 & 4 & \texttt{policy\_inconsistency} (4) \\
+Qwen3-32B        & 0 & 1 & \texttt{policy\_inconsistency} (1) \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The dominant residual error across all models is \texttt{policy\_inconsistency}, where a model applies different safety thresholds to semantically equivalent prompts. This is a known challenge for system-prompt-based mitigation: the prompt can shift the mean behavior but does not eliminate sensitivity to specific phrasings.
+The dominant residual error across all models is \texttt{policy\_inconsistency}, where a model applies different safety thresholds to semantically equivalent prompts. System-prompt mitigation shifts mean behavior but does not eliminate sensitivity to specific phrasings---a structural limitation of current architectures.
 
-\subsection{Mitigation Delta Distribution}
+\subsection{Model Safety Profiles}
 
-\Cref{fig:delta} shows the distribution of per-metric mitigation deltas across models.
+\Cref{fig:radar} shows radar charts of post-mitigation safety profiles, providing a compact view of each model's strengths and weaknesses across the five evaluation dimensions.
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=\linewidth]{chart_mitigation_delta}
-  \caption{Per-metric mitigation deltas ($\Delta = \text{post} - \text{pre}$) across models. Positive values indicate improvement from mitigation.}
-  \label{fig:delta}
+  \includegraphics[width=\linewidth]{chart_radar_all_models}
+  \caption{Post-mitigation safety profiles across all models. Each axis represents one of the five evaluation metrics (1--5 scale). Larger area indicates stronger overall safety behavior.}
+  \label{fig:radar}
 \end{figure}
 
-The delta distribution reveals a bimodal pattern: mitigation robustness consistently improves (all deltas positive), while calibration and evidence grounding show model-dependent effects that can be slightly negative. This motivates metric-specific analysis rather than relying on aggregate scores alone.
+The radar profiles reveal distinct model ``shapes'': Qwen3-32B and DeepSeek-V3 show the most balanced profiles with high scores across all dimensions, while GPT-4o shows a characteristic weakness on refusal consistency (3.83) and evidence grounding (3.96) despite strong mitigation robustness (4.54).
+
+\subsection{Scoring Validation: Pattern-Based vs.\ LLM-as-Judge}
+\label{sec:validation}
+
+\Cref{tab:inter_rater} summarizes the agreement between the pattern-based scorer and the LLM-as-judge (Claude Sonnet 4) across all 288 responses (6 models $\times$ 48 responses each).
+
+\begin{table}[t]
+\centering
+\caption{Inter-rater agreement between pattern-based scorer and LLM-as-judge across all 6 models (288 paired reviews). MAD = mean absolute divergence (lower is better). Error-tag match = exact-match rate on error tag sets.}
+\label{tab:inter_rater}
+\small
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+\textbf{Model} & \textbf{Paired} & \textbf{Mean MAD} & \textbf{Error-tag} & \textbf{Adjudication} \\
+ & \textbf{reviews} & \textbf{(5 metrics)} & \textbf{match} & \textbf{rate} \\
+\midrule
+GPT-4o           & 48 & 0.77 & 0.77 & 31.2\% \\
+Claude-Sonnet-4  & 48 & 0.57 & 0.90 & 18.8\% \\
+Gemini-2.5-Pro   & 48 & 0.67 & 0.96 & 35.4\% \\
+DeepSeek-V3      & 48 & 0.66 & 0.94 & 31.2\% \\
+Llama-3.3-70B    & 48 & 0.72 & 0.69 & 31.2\% \\
+Qwen3-32B        & 48 & 0.54 & 0.98 & 22.9\% \\
+\midrule
+\textbf{Overall} & \textbf{288} & \textbf{0.66} & \textbf{0.87} & \textbf{28.5\%} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The mean absolute divergence across all models and metrics is 0.66 on a 5-point scale, indicating that the two scoring approaches agree within approximately two-thirds of a point. Error-tag exact-match rates range from 0.69 (Llama) to 0.98 (Qwen3), with an overall rate of 0.87 across all 288 paired reviews---strong agreement on failure mode identification. Claude-Sonnet-4 shows the lowest adjudication rate (18.8\%), while Gemini-2.5-Pro shows the highest (35.4\%), reflecting greater scorer divergence on Gemini's nuanced refusal strategies.
+
+Cohen's $\kappa$ (binarized at threshold 4) is low across most metrics, as expected: with most scores in the 4--5 range, the binarized distribution has very low variance, rendering $\kappa$ uninformative due to the base-rate problem~\citep{zheng2023judging}. The MAD and error-tag metrics provide more meaningful agreement evidence for this score distribution.
+
+The overall adjudication rate (28.5\%) indicates that roughly one-quarter to one-third of responses show sufficient divergence to warrant further review, with the LLM judge typically assigning more granular scores on refusal consistency (MAD = 0.90) and mitigation robustness (MAD = 0.67). This validates the pattern-based scorer as a reasonable first-pass approach while identifying specific items where richer evaluation is needed.
 
 \subsection{Cross-Model Summary}
 
-\Cref{fig:heatmap} provides an integrated view of post-mitigation performance across all models and metrics.
+\Cref{fig:heatmap} provides an integrated view of post-mitigation performance.
 
 \begin{figure}[t]
   \centering
   \includegraphics[width=\linewidth]{chart_model_heatmap}
-  \caption{Cross-model heatmap of post-mitigation metric scores across the five evaluation dimensions. Darker cells indicate higher scores.}
+  \caption{Cross-model heatmap of post-mitigation metric scores. Darker cells indicate higher scores.}
   \label{fig:heatmap}
 \end{figure}
 
-The heatmap confirms the overall pattern: Qwen3-32B and Llama-3.3-70B achieve the strongest post-mitigation profiles, while GPT-4o shows relatively lower scores on refusal consistency and evidence grounding despite its strong baseline.
+The pattern confirms that system-prompt mitigation is most effective for models with weaker baselines (Llama: $\Delta = +0.41$) and shows diminishing returns for models with strong built-in safety training (GPT-4o: $\Delta = +0.02$, Qwen3: $\Delta = +0.06$). The practical implication is that system-prompt mitigation is most valuable for open-weight models deployed without extensive safety fine-tuning.

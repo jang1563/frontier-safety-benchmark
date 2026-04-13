@@ -186,20 +186,20 @@
     },
     {
       "path": "deepmind_frontier_safety_package/docs/benchmark_card_draft.md",
-      "sha256": "6ac01b51fdf3e3b711b477a9ce8df6d86c5245e8c636a528259477bf8e0ae81b",
-      "size_bytes": 7816,
+      "sha256": "3bf0ed87e3fe4e673ba2e32138bb4a313df472b14efbed8469d213894e86305b",
+      "size_bytes": 7718,
       "artifact_type": "documentation"
     },
     {
       "path": "deepmind_frontier_safety_package/docs/release_log_0.2.0_demo.md",
-      "sha256": "58b8b4d01835ec05264ec7ee7719ac1eeb7413be48d0ce3fd844abc62e9c8f23",
-      "size_bytes": 3992,
+      "sha256": "83a34c7baaa94a47cc627287eba8231c747b5430e7d2d64a137e5e24689d8b78",
+      "size_bytes": 3326,
       "artifact_type": "documentation"
     },
     {
       "path": "deepmind_frontier_safety_package/docs/adjudication_handbook.md",
-      "sha256": "5c23c46455ae36e99691b8400db26b79e4fa8c823e3141993d11c8a02feebec7",
-      "size_bytes": 5949,
+      "sha256": "0b53934c8cab0b8ce5c64dc5d19e4e02e86f299f6866b742df394869eef746fe",
+      "size_bytes": 5911,
       "artifact_type": "documentation"
     },
     {
